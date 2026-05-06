@@ -1,0 +1,10 @@
+# Secret credentials — never upload these
+.env
+
+# Python cache files — not needed on GitHub
+__pycache__/
+*.pyc
+
+# Output files — these get regenerated each run
+capital_calls/output/
+capital_calls/logs/
