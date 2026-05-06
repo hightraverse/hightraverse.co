@@ -30,7 +30,7 @@
 html { scroll-behavior: smooth; }
 body { background: var(--ink); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; overflow-x: hidden; }
 
-/* ── NAV ── */
+/* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 24px 56px;
@@ -44,144 +44,50 @@ nav.scrolled {
   padding: 16px 56px;
   border-color: var(--border-dark);
 }
-.logo {
-  font-family: 'Syne', sans-serif;
-  font-size: 18px; font-weight: 700;
-  color: var(--white); text-decoration: none;
-  letter-spacing: -0.01em;
-}
+.logo { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: -0.01em; }
 .logo span { color: var(--accent); }
 .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
-.nav-links a {
-  font-size: 13px; font-weight: 400;
-  color: var(--white-dimmer); text-decoration: none;
-  letter-spacing: 0.01em; transition: color 0.2s;
-}
+.nav-links a { font-size: 13px; font-weight: 400; color: var(--white-dimmer); text-decoration: none; letter-spacing: 0.01em; transition: color 0.2s; }
 .nav-links a:hover { color: var(--white); }
-.nav-cta {
-  color: var(--white) !important; background: var(--accent);
-  padding: 9px 22px; border-radius: 6px;
-  font-weight: 500 !important; font-size: 13px !important;
-  transition: background 0.2s, transform 0.15s !important;
-}
+.nav-cta { color: var(--white) !important; background: var(--accent); padding: 9px 22px; border-radius: 6px; font-weight: 500 !important; font-size: 13px !important; transition: background 0.2s, transform 0.15s !important; }
 .nav-cta:hover { background: #1d4ed8 !important; transform: translateY(-1px); }
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh; background: var(--ink);
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 140px 56px 100px;
-  position: relative; overflow: hidden;
-}
-
-/* Subtle grid */
-.hero-grid {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
-}
-
-/* Blue glow */
-.hero-glow {
-  position: absolute; top: 15%; left: 52%;
-  width: 640px; height: 520px;
-  background: radial-gradient(ellipse, rgba(37,99,235,0.16) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-/* THE SUBTLE ALTA NOD — faint ridgeline silhouette, barely visible */
-.ridge-svg {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  width: 100%; height: 55%;
-  opacity: 0.04;
-  pointer-events: none;
-}
-
-.hero-tag {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(37,99,235,0.12);
-  border: 1px solid var(--border-accent);
-  border-radius: 100px; padding: 6px 16px;
-  font-size: 12px; font-weight: 400; color: #93b4fd;
-  letter-spacing: 0.04em; margin-bottom: 32px; width: fit-content;
-  opacity: 0; animation: fadeUp 0.8s forwards 0.2s;
-}
-
-.hero-tag-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--accent); animation: pulse 2s infinite;
-}
-
+/* HERO */
+.hero { min-height: 100vh; background: var(--ink); display: flex; flex-direction: column; justify-content: center; padding: 140px 56px 100px; position: relative; overflow: hidden; }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%); }
+.hero-glow { position: absolute; top: 15%; left: 52%; width: 640px; height: 520px; background: radial-gradient(ellipse, rgba(37,99,235,0.16) 0%, transparent 70%); pointer-events: none; }
+.ridge-svg { position: absolute; bottom: 0; left: 0; right: 0; width: 100%; height: 55%; opacity: 0.04; pointer-events: none; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(37,99,235,0.12); border: 1px solid var(--border-accent); border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 400; color: #93b4fd; letter-spacing: 0.04em; margin-bottom: 32px; width: fit-content; opacity: 0; animation: fadeUp 0.8s forwards 0.2s; }
+.hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-
-.hero-title {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(44px, 6.5vw, 84px);
-  font-weight: 700; line-height: 1.0;
-  letter-spacing: -0.03em; color: var(--white);
-  margin-bottom: 28px; max-width: 800px;
-  opacity: 0; animation: fadeUp 0.8s forwards 0.4s;
-}
+.hero-title { font-family: 'Syne', sans-serif; font-size: clamp(44px, 6.5vw, 84px); font-weight: 700; line-height: 1.0; letter-spacing: -0.03em; color: var(--white); margin-bottom: 28px; max-width: 800px; opacity: 0; animation: fadeUp 0.8s forwards 0.4s; }
 .hero-title .accent { color: var(--accent); }
 .hero-title .dim { color: var(--white-dim); font-weight: 400; }
-
-.hero-sub {
-  font-size: 18px; font-weight: 300; color: var(--white-dim);
-  line-height: 1.75; max-width: 540px; margin-bottom: 44px;
-  opacity: 0; animation: fadeUp 0.8s forwards 0.6s;
-}
-
-.hero-actions {
-  display: flex; gap: 14px; align-items: center;
-  opacity: 0; animation: fadeUp 0.8s forwards 0.8s;
-}
-
-.btn-primary {
-  background: var(--accent); color: var(--white);
-  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
-  padding: 14px 32px; border: none; border-radius: 8px; cursor: pointer;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  text-decoration: none; display: inline-block;
-}
+.hero-sub { font-size: 18px; font-weight: 300; color: var(--white-dim); line-height: 1.75; max-width: 540px; margin-bottom: 44px; opacity: 0; animation: fadeUp 0.8s forwards 0.6s; }
+.hero-actions { display: flex; gap: 14px; align-items: center; opacity: 0; animation: fadeUp 0.8s forwards 0.8s; }
+.btn-primary { background: var(--accent); color: var(--white); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 14px 32px; border: none; border-radius: 8px; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; text-decoration: none; display: inline-block; }
 .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-glow); }
-
-.btn-secondary {
-  background: rgba(255,255,255,0.06); color: var(--white-dim);
-  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400;
-  padding: 14px 28px; border: 1px solid var(--border-dark); border-radius: 8px;
-  cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
-  text-decoration: none; display: inline-block;
-}
+.btn-secondary { background: rgba(255,255,255,0.06); color: var(--white-dim); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; padding: 14px 28px; border: 1px solid var(--border-dark); border-radius: 8px; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; text-decoration: none; display: inline-block; }
 .btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--white); border-color: rgba(255,255,255,0.16); }
-
-.hero-stats {
-  display: flex; gap: 0; margin-top: 80px;
-  border-top: 1px solid var(--border-dark); padding-top: 40px;
-  opacity: 0; animation: fadeUp 0.8s forwards 1s;
-}
+.hero-stats { display: flex; gap: 0; margin-top: 80px; border-top: 1px solid var(--border-dark); padding-top: 40px; opacity: 0; animation: fadeUp 0.8s forwards 1s; }
 .hstat { flex: 1; padding-right: 40px; border-right: 1px solid var(--border-dark); margin-right: 40px; }
 .hstat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
 .hstat-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 700; color: var(--white); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
 .hstat-num span { color: var(--accent); }
 .hstat-label { font-size: 12px; font-weight: 400; color: var(--white-dimmer); letter-spacing: 0.02em; }
 
-/* ── TRANSITION ── */
+/* TRANSITION */
 .transition-section { height: 180px; background: linear-gradient(180deg, var(--ink) 0%, var(--surface) 100%); }
 
-/* ── LIGHT SECTIONS ── */
+/* LIGHT SECTIONS */
 .light { background: var(--surface); color: var(--text); }
 .light-white { background: var(--surface-2); color: var(--text); }
 section { padding: 100px 56px; }
-
 .section-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
 .section-title { font-family: 'Syne', sans-serif; font-size: clamp(30px, 4vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 18px; color: var(--text); }
 .section-sub { font-size: 16px; font-weight: 300; color: var(--text-muted); line-height: 1.75; max-width: 460px; }
 
-/* ── PROBLEM ── */
+/* PROBLEM */
 .problem-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: start; }
 .pain-list { margin-top: 44px; }
 .pain-item { display: flex; gap: 20px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border-light); }
@@ -201,7 +107,40 @@ section { padding: 100px 56px; }
 .saving-text { font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
 .saving-text strong { color: var(--accent); font-weight: 600; }
 
-/* ── FEATURES ── */
+/* HOW IT WORKS */
+.how-inner { max-width: 1180px; margin: 0 auto; }
+.how-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px; padding-bottom: 48px; border-bottom: 1px solid var(--border-dark); }
+.tab-bar { display: flex; gap: 4px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-dark); border-radius: 12px; padding: 5px; margin-bottom: 32px; }
+.tab-btn { flex: 1; padding: 10px 16px; background: transparent; border: none; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: var(--white-dimmer); cursor: pointer; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+.tab-btn.active { background: var(--accent); color: var(--white); font-weight: 500; }
+.tab-btn:hover:not(.active) { color: var(--white); background: rgba(255,255,255,0.08); }
+.tab-panel { display: none; }
+.tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.tab-steps { display: flex; flex-direction: column; gap: 0; }
+.tab-step { display: flex; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--border-dark); }
+.tab-step:first-child { border-top: 1px solid var(--border-dark); }
+.step-num { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; min-width: 28px; padding-top: 2px; }
+.step-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 4px; }
+.step-desc { font-size: 13px; font-weight: 300; color: var(--white-dim); line-height: 1.6; }
+.tab-visual { background: rgba(255,255,255,0.03); border: 1px solid var(--border-dark); border-radius: 12px; padding: 28px; font-family: 'Inter', monospace; font-size: 12px; line-height: 1.8; }
+.tab-visual .v-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white-dimmer); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+.v-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.term-line { color: var(--white-dimmer); }
+.term-line .ok { color: #4ade80; }
+.term-line .label { color: #93b4fd; }
+.term-line .val { color: var(--white); }
+.term-line .hi { color: #4ade80; font-weight: 500; }
+.doc-preview { display: flex; flex-direction: column; gap: 10px; }
+.doc-card { background: rgba(255,255,255,0.05); border: 1px solid var(--border-dark); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; }
+.doc-icon { font-size: 18px; }
+.doc-name { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: var(--white); margin-bottom: 2px; }
+.doc-meta { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--white-dimmer); }
+.doc-badge { margin-left: auto; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
+.doc-badge.green { background: rgba(74,222,128,0.15); color: #4ade80; }
+.doc-badge.amber { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.doc-badge.blue  { background: var(--accent-dim); color: #93b4fd; }
+
+/* FEATURES */
 .features-inner { max-width: 1180px; margin: 0 auto; }
 .features-top { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; padding-bottom: 56px; border-bottom: 1px solid var(--border-light); }
 .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border-light); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; }
@@ -210,10 +149,31 @@ section { padding: 100px 56px; }
 .feature-num { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 16px; }
 .feature-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; }
 .feature-desc { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
-.feature-badge { display: inline-block; margin-top: 14px; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); padding: 3px 10px; border-radius: 100px; }
+.feature-badge { display: inline-block; margin-top: 14px; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
+.feature-badge.live { color: #4ade80; background: rgba(74,222,128,0.12); }
 .feature-badge.soon { color: var(--text-muted); background: rgba(13,17,23,0.06); }
 
-/* ── WHO ── */
+/* ROADMAP */
+.roadmap-inner { max-width: 1180px; margin: 0 auto; }
+.roadmap-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light); }
+.roadmap-phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.phase-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border-dark); border-radius: 14px; padding: 28px 24px; }
+.phase-card.current { border-color: var(--border-accent); background: rgba(37,99,235,0.06); }
+.phase-card.done { border-color: rgba(74,222,128,0.25); background: rgba(74,222,128,0.04); }
+.phase-num { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white-dimmer); margin-bottom: 10px; }
+.phase-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 6px; letter-spacing: -0.01em; }
+.phase-timeline { font-size: 11px; font-weight: 400; color: var(--white-dimmer); margin-bottom: 18px; letter-spacing: 0.02em; }
+.phase-status { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; margin-bottom: 20px; }
+.phase-status.done-status { background: rgba(74,222,128,0.15); color: #4ade80; }
+.phase-status.active-status { background: var(--accent-dim); color: #93b4fd; }
+.phase-status.future-status { background: rgba(255,255,255,0.06); color: var(--white-dimmer); }
+.phase-items { display: flex; flex-direction: column; gap: 8px; }
+.phase-item { font-size: 12px; font-weight: 300; color: var(--white-dimmer); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+.phase-item::before { content: "·"; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+.phase-item.done-item { color: rgba(255,255,255,0.5); }
+.phase-item.done-item::before { content: "✓"; color: #4ade80; font-size: 10px; padding-top: 1px; }
+
+/* WHO */
 .who-inner { max-width: 1180px; margin: 0 auto; }
 .who-top { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px; }
 .seg-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
@@ -223,7 +183,7 @@ section { padding: 100px 56px; }
 .seg-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
 .seg-desc { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.65; }
 
-/* ── CTA ── */
+/* CTA */
 .cta-outer { background: var(--ink); padding: 120px 56px; position: relative; overflow: hidden; }
 .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(37,99,235,0.15) 0%, transparent 70%); pointer-events: none; }
 .cta-inner { max-width: 600px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
@@ -237,26 +197,24 @@ section { padding: 100px 56px; }
 .email-form button:hover { background: #1d4ed8; }
 .form-note { font-size: 12px; color: var(--white-dimmer); margin-top: 12px; }
 
-/* ── FOOTER — subtle Alta coordinates as the only nod ── */
-footer {
-  background: var(--ink-2); padding: 36px 56px;
-  border-top: 1px solid var(--border-dark);
-  display: flex; justify-content: space-between; align-items: center;
-}
+/* FOOTER */
+footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var(--border-dark); display: flex; justify-content: space-between; align-items: center; }
 .footer-logo { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: -0.01em; }
 .footer-logo span { color: var(--accent); }
 .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
 .footer-note { font-size: 12px; color: var(--white-dimmer); }
-.footer-coords {
-  font-size: 11px; color: rgba(255,255,255,0.18);
-  letter-spacing: 0.08em; font-family: 'Inter', monospace;
-}
+.footer-coords { font-size: 11px; color: rgba(255,255,255,0.18); letter-spacing: 0.08em; font-family: 'Inter', monospace; }
 
-/* ── ANIMATIONS ── */
+/* ANIMATIONS */
 @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
 .reveal { opacity:0; transform:translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity:1; transform:none; }
 
+@media (max-width:900px) {
+  .roadmap-phases { grid-template-columns: 1fr 1fr; }
+  .tab-panel.active { grid-template-columns: 1fr; }
+  .how-header { grid-template-columns: 1fr; gap: 32px; }
+}
 @media (max-width:768px) {
   nav { padding: 18px 24px; }
   nav.scrolled { padding: 14px 24px; }
@@ -266,11 +224,17 @@ footer {
   .hstat { flex: 1 1 40%; margin-right: 0; border-right: none; padding-right: 0; margin-bottom: 20px; }
   section { padding: 72px 24px; }
   .cta-outer { padding: 80px 24px; }
-  .problem-inner,.features-top,.who-top { grid-template-columns: 1fr; gap: 44px; }
+  .problem-inner,.features-top,.who-top,.roadmap-header { grid-template-columns: 1fr; gap: 44px; }
   .features-grid { grid-template-columns: 1fr; }
   .seg-grid { grid-template-columns: 1fr; }
+  .tab-bar { flex-wrap: wrap; }
+  .tab-btn { flex: 1 1 45%; }
   footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
   .footer-right { align-items: center; }
+}
+@media (max-width:480px) {
+  .roadmap-phases { grid-template-columns: 1fr; }
+  .tab-btn { flex: 1 1 100%; }
 }
 </style>
 </head>
@@ -279,7 +243,9 @@ footer {
 <nav id="nav">
   <a href="#" class="logo">High<span>Traverse</span></a>
   <ul class="nav-links">
+    <li><a href="#how-it-works">How it works</a></li>
     <li><a href="#features">Platform</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#who">Who it's for</a></li>
     <li><a href="#early-access" class="nav-cta">Request Access</a></li>
   </ul>
@@ -288,35 +254,27 @@ footer {
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
-
-  <!-- THE SUBTLE ALTA NOD: pure ridge geometry, barely visible at 4% opacity -->
   <svg class="ridge-svg" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 400 L0 300 L60 280 L120 295 L180 260 L220 272 L260 240 L300 255 L340 220 L385 238 L430 195 L468 210 L506 175 L534 188 L562 165 L590 178 L620 148 L655 162 L690 130 L725 148 L760 165 L795 145 L830 162 L865 178 L900 158 L935 175 L970 192 L1005 172 L1040 188 L1075 210 L1110 188 L1145 215 L1180 242 L1215 218 L1250 242 L1285 268 L1320 245 L1375 272 L1440 290 L1440 400 Z"
-      fill="white" opacity="1"/>
+    <path d="M0 400 L0 300 L60 280 L120 295 L180 260 L220 272 L260 240 L300 255 L340 220 L385 238 L430 195 L468 210 L506 175 L534 188 L562 165 L590 178 L620 148 L655 162 L690 130 L725 148 L760 165 L795 145 L830 162 L865 178 L900 158 L935 175 L970 192 L1005 172 L1040 188 L1075 210 L1110 188 L1145 215 L1180 242 L1215 218 L1250 242 L1285 268 L1320 245 L1375 272 L1440 290 L1440 400 Z" fill="white" opacity="1"/>
   </svg>
 
-  <div class="hero-tag">
-    <div class="hero-tag-dot"></div>
-    Now in early access
-  </div>
+  <div class="hero-tag"><div class="hero-tag-dot"></div>Now in early access</div>
 
   <h1 class="hero-title">
     Private markets ops,<br>
     <span class="dim">finally</span> <span class="accent">automated.</span>
   </h1>
 
-  <p class="hero-sub">
-    HighTraverse ingests your capital calls and distribution notices, allocates to every LP automatically, generates the memos and wires, and gives you a live dashboard of every fund's value — all in one secure platform.
-  </p>
+  <p class="hero-sub">HighTraverse ingests your capital calls and distribution notices, allocates to every LP automatically, generates the memos and wires, and gives you a live dashboard of every fund's value — all in one secure platform.</p>
 
   <div class="hero-actions">
     <a href="#early-access" class="btn-primary">Request Early Access</a>
-    <a href="#features" class="btn-secondary">See the platform →</a>
+    <a href="#how-it-works" class="btn-secondary">See how it works →</a>
   </div>
 
   <div class="hero-stats">
     <div class="hstat"><div class="hstat-num">2<span>hrs</span></div><div class="hstat-label">Saved per capital call</div></div>
-    <div class="hstat"><div class="hstat-num">3</div><div class="hstat-label">Core workflows automated</div></div>
+    <div class="hstat"><div class="hstat-num">4</div><div class="hstat-label">Core workflows live</div></div>
     <div class="hstat"><div class="hstat-num">100<span>%</span></div><div class="hstat-label">Audit trail on every document</div></div>
     <div class="hstat"><div class="hstat-num">0</div><div class="hstat-label">Manual allocation errors</div></div>
   </div>
@@ -349,6 +307,136 @@ footer {
   </div>
 </section>
 
+<!-- HOW IT WORKS -->
+<section style="background:var(--ink); color:var(--white); padding:100px 56px;" id="how-it-works">
+  <div class="how-inner">
+    <div class="how-header reveal">
+      <div>
+        <span class="section-tag">How it works</span>
+        <h2 class="section-title" style="color:var(--white);">Four workflows. All live today.</h2>
+      </div>
+      <p class="section-sub" style="color:var(--white-dim);">Each workflow is a complete, end-to-end automation — from raw PDF in to finished documents out, with every step logged and every number reconciled.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="showTab(event,'capital-call')">Capital Call Processing</button>
+        <button class="tab-btn" onclick="showTab(event,'memo-gen')">LP Memo Generation</button>
+        <button class="tab-btn" onclick="showTab(event,'wire')">Wire Templates</button>
+        <button class="tab-btn" onclick="showTab(event,'distribution')">Distribution Notices</button>
+      </div>
+
+      <!-- TAB 1 -->
+      <div class="tab-panel active" id="tab-capital-call">
+        <div class="tab-steps">
+          <div class="tab-step"><div class="step-num">01</div><div><div class="step-title">Ingest the capital call PDF</div><div class="step-desc">Drop in the capital call notice from the underlying fund. HighTraverse extracts the fund name, total amount, and due date automatically — no data entry.</div></div></div>
+          <div class="tab-step"><div class="step-num">02</div><div><div class="step-title">Map to your vehicle</div><div class="step-desc">The investment is matched to the correct fund-of-funds vehicle using your mapping table. Works across multiple vehicles and GP relationships.</div></div></div>
+          <div class="tab-step"><div class="step-num">03</div><div><div class="step-title">Calculate pro-rata allocations</div><div class="step-desc">Every LP's share computed from their ownership percentage. Rounding handled per fund accounting standards — adjustment goes to the largest LP so the total always reconciles exactly.</div></div></div>
+          <div class="tab-step"><div class="step-num">04</div><div><div class="step-title">Output to Excel + log everything</div><div class="step-desc">A formatted allocations spreadsheet is generated with a complete header block and LP-by-LP breakdown. Every run is appended to an audit log with timestamps.</div></div></div>
+        </div>
+        <div class="tab-visual">
+          <div class="v-label"><div class="v-dot"></div>Live output — allocator.py</div>
+          <div class="term-line">==================================</div>
+          <div class="term-line">&nbsp; Capital Call Allocator</div>
+          <div class="term-line">==================================</div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">Step 1: Fetching LP data from Supabase...</div>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> <span class="label">Investors loaded:</span> <span class="val">17</span></div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">Step 2: Extracting PDF data...</div>
+          <div class="term-line">&nbsp; <span class="label">Fund:</span> <span class="val">Sequoia Capital Fund XVIII</span></div>
+          <div class="term-line">&nbsp; <span class="label">Due: </span> <span class="val">June 15, 2026</span></div>
+          <div class="term-line">&nbsp; <span class="label">Call:</span> <span class="val">$4,250,000.00</span></div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">Step 3: Mapping to vehicle...</div>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> <span class="val">HT Growth Fund II</span></div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">Step 4: Calculating allocations...</div>
+          <div class="term-line">&nbsp; Rounding adj → <span class="val">Anchor Capital LP</span></div>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> Total reconciled: <span class="hi">$4,250,000.00</span></div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> allocations.xlsx written</div>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> Run logged</div>
+        </div>
+      </div>
+
+      <!-- TAB 2 -->
+      <div class="tab-panel" id="tab-memo-gen">
+        <div class="tab-steps">
+          <div class="tab-step"><div class="step-num">01</div><div><div class="step-title">Read the allocations file</div><div class="step-desc">The memo generator picks up the output from the allocator — fund name, vehicle, due date, total call, and each LP's specific allocation. No re-entry required.</div></div></div>
+          <div class="tab-step"><div class="step-num">02</div><div><div class="step-title">Generate one branded PDF per LP</div><div class="step-desc">A fully formatted capital call memo is generated for each limited partner — HighTraverse letterhead, their specific allocation highlighted, complete deal details, and wire instruction placeholder.</div></div></div>
+          <div class="tab-step"><div class="step-num">03</div><div><div class="step-title">Safe file naming, every time</div><div class="step-desc">Files are named automatically using the LP name with safe character handling — ready to send or upload without manual renaming.</div></div></div>
+          <div class="tab-step"><div class="step-num">04</div><div><div class="step-title">Scales to any fund size</div><div class="step-desc">Whether you have 5 LPs or 50, every memo is generated in seconds. Future versions will support custom letterhead per client.</div></div></div>
+        </div>
+        <div class="tab-visual">
+          <div class="v-label"><div class="v-dot"></div>Memos generated — /output/memos/</div>
+          <div class="doc-preview">
+            <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Anchor Capital LP - Capital Call Memo.pdf</div><div class="doc-meta">$638,250.00 · Due June 15, 2026</div></div><span class="doc-badge green">Generated</span></div>
+            <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Meridian Family Office - Capital Call Memo.pdf</div><div class="doc-meta">$425,000.00 · Due June 15, 2026</div></div><span class="doc-badge green">Generated</span></div>
+            <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Bluewater Endowment Fund - Capital Call Memo.pdf</div><div class="doc-meta">$212,500.00 · Due June 15, 2026</div></div><span class="doc-badge green">Generated</span></div>
+            <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Summit Partners III LP - Capital Call Memo.pdf</div><div class="doc-meta">$106,250.00 · Due June 15, 2026</div></div><span class="doc-badge green">Generated</span></div>
+            <div style="font-size:12px; color:var(--white-dimmer); padding-top:6px;">+ 13 more memos · All generated in 2.1 seconds</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3 -->
+      <div class="tab-panel" id="tab-wire">
+        <div class="tab-steps">
+          <div class="tab-step"><div class="step-num">01</div><div><div class="step-title">Extract wire instructions from the notice</div><div class="step-desc">Bank name, ABA routing number, account number, and beneficiary name are extracted from the capital call PDF automatically — no copy-paste from the notice.</div></div></div>
+          <div class="tab-step"><div class="step-num">02</div><div><div class="step-title">Compare against historical records</div><div class="step-desc">The extracted wire instructions are compared against the last known good record for that fund. This is the wire fraud detection layer — any change in routing number or account triggers a flag.</div></div></div>
+          <div class="tab-step"><div class="step-num">03</div><div><div class="step-title">Status: NEW, MATCH, or CHANGED</div><div class="step-desc">Every wire template is stamped with a verification status. MATCH = green light. NEW = first-time, verify verbally. CHANGED = stop, do not wire — verbal confirmation required before proceeding.</div></div></div>
+          <div class="tab-step"><div class="step-num">04</div><div><div class="step-title">Generate the wire template PDF</div><div class="step-desc">A complete wire template is output with originator details, beneficiary, payment amount, color-coded alert box, and sign-off lines for approval.</div></div></div>
+        </div>
+        <div class="tab-visual">
+          <div class="v-label"><div class="v-dot"></div>Wire verification status</div>
+          <div class="doc-preview">
+            <div class="doc-card"><div class="doc-icon">🏦</div><div><div class="doc-name">Sequoia Capital Fund XVIII</div><div class="doc-meta">JPMorgan Chase · ABA 021000021</div></div><span class="doc-badge green">MATCH</span></div>
+            <div class="doc-card"><div class="doc-icon">🏦</div><div><div class="doc-name">Insight Partners XI LP</div><div class="doc-meta">Silicon Valley Bank · ABA 121140399</div></div><span class="doc-badge blue">NEW</span></div>
+            <div class="doc-card" style="border-color:rgba(251,191,36,0.4);"><div class="doc-icon">⚠️</div><div><div class="doc-name">Accel Growth Fund IV</div><div class="doc-meta" style="color:#fbbf24;">Account number changed — hold wire</div></div><span class="doc-badge amber">CHANGED</span></div>
+            <div style="font-size:12px; color:var(--white-dimmer); padding:10px 0 4px;">CHANGED status: verbal confirmation required before proceeding. Sign-off line added to wire template automatically.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4 -->
+      <div class="tab-panel" id="tab-distribution">
+        <div class="tab-steps">
+          <div class="tab-step"><div class="step-num">01</div><div><div class="step-title">Ingest the distribution notice PDF</div><div class="step-desc">The distribution notice from the underlying fund is parsed for total distribution amount and payment date. Same extraction engine as the capital call workflow.</div></div></div>
+          <div class="tab-step"><div class="step-num">02</div><div><div class="step-title">Calculate LP distributions</div><div class="step-desc">Each LP's pro-rata share of the distribution is calculated from their ownership percentage. Rounding reconciles to the exact total — same fund accounting standard as capital calls.</div></div></div>
+          <div class="tab-step"><div class="step-num">03</div><div><div class="step-title">Generate distribution notices</div><div class="step-desc">A branded distribution notice is generated per LP — green color scheme signals money coming in, not going out. Each notice shows their specific amount, payment date, and fund details.</div></div></div>
+          <div class="tab-step"><div class="step-num">04</div><div><div class="step-title">Summary spreadsheet + audit log</div><div class="step-desc">A complete distributions.xlsx is written alongside the per-LP notices. Every run is logged to the same audit trail as capital calls, with transaction type tagged for reconciliation.</div></div></div>
+        </div>
+        <div class="tab-visual">
+          <div class="v-label"><div class="v-dot"></div>Live output — distribution_generator.py</div>
+          <div class="term-line">==================================</div>
+          <div class="term-line">&nbsp; Distribution Notice Generator</div>
+          <div class="term-line">==================================</div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">Step 1: Extracting PDF data...</div>
+          <div class="term-line">&nbsp; <span class="label">Fund:   </span> <span class="val">Insight Partners XI</span></div>
+          <div class="term-line">&nbsp; <span class="label">Payment:</span> <span class="val">May 15, 2026</span></div>
+          <div class="term-line">&nbsp; <span class="label">Total:  </span> <span class="hi">$1,250,000.00</span></div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">Step 2: Calculating LP shares...</div>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> Total reconciled: <span class="hi">$1,250,000.00</span></div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">Step 3: Generating notices...</div>
+          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Anchor Capital LP - Distribution Notice.pdf</div>
+          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Meridian Family Office - Distribution Notice.pdf</div>
+          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Bluewater Endowment Fund - Distribution Notice.pdf</div>
+          <div class="term-line">&nbsp; ... 14 more</div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> distributions.xlsx written</div>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> Run logged (Type: Distribution)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
 <section class="light-white" id="features">
   <div class="features-inner">
     <div class="features-top reveal">
@@ -356,16 +444,88 @@ footer {
       <p class="section-sub">Every step of your capital call and distribution workflow, automated. Built for the way private markets operations actually work.</p>
     </div>
     <div class="features-grid reveal">
-      <div class="feature"><div class="feature-num">01</div><div class="feature-title">Document ingestion</div><div class="feature-desc">Capital calls and distribution notices arrive via email or upload. Fund name, amount, and date extracted automatically. No manual data entry.</div><span class="feature-badge">Core</span></div>
-      <div class="feature"><div class="feature-num">02</div><div class="feature-title">Pro-rata allocation</div><div class="feature-desc">Every LP's share calculated instantly. Rounding handled correctly, reconciliation built in. Works across any fund structure — FoF, co-invest, direct.</div><span class="feature-badge">Core</span></div>
-      <div class="feature"><div class="feature-num">03</div><div class="feature-title">Memo generation</div><div class="feature-desc">Branded capital call and distribution memos generated for every LP automatically. What used to take hours per notice takes seconds.</div><span class="feature-badge">Core</span></div>
-      <div class="feature"><div class="feature-num">04</div><div class="feature-title">Wire automation</div><div class="feature-desc">Wire templates generated per transaction. Bank details stored securely. Approval workflow built in. Exportable to your bank in one click.</div><span class="feature-badge">Core</span></div>
-      <div class="feature"><div class="feature-num">05</div><div class="feature-title">Live ops dashboard</div><div class="feature-desc">Every capital call, distribution, and due date across all funds in one view. Capital statements ingested automatically — FMV per investment and per investor.</div><span class="feature-badge soon">Coming soon</span></div>
-      <div class="feature"><div class="feature-num">06</div><div class="feature-title">Secure document vault</div><div class="feature-desc">Every document encrypted, indexed, and stored permanently. Full audit trail on every action. Built for compliance from day one.</div><span class="feature-badge">Core</span></div>
+      <div class="feature"><div class="feature-num">01</div><div class="feature-title">Document ingestion</div><div class="feature-desc">Capital calls and distribution notices parsed automatically. Fund name, amount, and date extracted with no manual data entry.</div><span class="feature-badge live">Live</span></div>
+      <div class="feature"><div class="feature-num">02</div><div class="feature-title">Pro-rata allocation</div><div class="feature-desc">Every LP's share calculated instantly. Rounding handled per fund accounting standards — reconciles to the penny every time, across any fund structure.</div><span class="feature-badge live">Live</span></div>
+      <div class="feature"><div class="feature-num">03</div><div class="feature-title">Memo generation</div><div class="feature-desc">Branded capital call and distribution memos generated for every LP automatically. What used to take hours per notice takes seconds.</div><span class="feature-badge live">Live</span></div>
+      <div class="feature"><div class="feature-num">04</div><div class="feature-title">Wire automation + fraud detection</div><div class="feature-desc">Wire templates generated per transaction. Bank detail changes flagged automatically. Approval workflow and full audit trail built in.</div><span class="feature-badge live">Live</span></div>
+      <div class="feature"><div class="feature-num">05</div><div class="feature-title">Live FMV dashboard</div><div class="feature-desc">Capital statements ingested automatically. FMV per investment and per investor, updated each period. Every fund's value in one view — without touching your GL.</div><span class="feature-badge soon">Coming soon</span></div>
+      <div class="feature"><div class="feature-num">06</div><div class="feature-title">Document custody vault</div><div class="feature-desc">Every document encrypted, indexed, and stored with a full chain of custody. Search any capital call, distribution notice, or memo ever processed. Built for compliance from day one.</div><span class="feature-badge soon">Coming soon</span></div>
     </div>
   </div>
 </section>
 
+<!-- ROADMAP -->
+<section style="background:var(--ink-2); color:var(--white); padding:100px 56px;" id="roadmap">
+  <div class="roadmap-inner">
+    <div class="roadmap-header reveal">
+      <div>
+        <span class="section-tag">Roadmap</span>
+        <h2 class="section-title" style="color:var(--white);">Where we're going.</h2>
+      </div>
+      <p class="section-sub" style="color:var(--white-dim);">Phase 1 is complete and running against live data. The platform is being expanded into a full web application with AI-powered document processing and an enterprise-grade LP portal.</p>
+    </div>
+    <div class="roadmap-phases reveal">
+      <div class="phase-card done">
+        <div class="phase-num">Phase 1</div>
+        <div class="phase-title">Automation Engine</div>
+        <div class="phase-timeline">Now · Complete</div>
+        <div class="phase-status done-status">✓ Complete</div>
+        <div class="phase-items">
+          <div class="phase-item done-item">Capital call allocator</div>
+          <div class="phase-item done-item">LP memo generator</div>
+          <div class="phase-item done-item">Wire template + fraud detection</div>
+          <div class="phase-item done-item">Distribution notice generator</div>
+          <div class="phase-item done-item">Supabase data layer</div>
+          <div class="phase-item done-item">Full audit logging</div>
+        </div>
+      </div>
+      <div class="phase-card current">
+        <div class="phase-num">Phase 2</div>
+        <div class="phase-title">Secure Web App</div>
+        <div class="phase-timeline">Months 2–6</div>
+        <div class="phase-status active-status">⟶ In progress</div>
+        <div class="phase-items">
+          <div class="phase-item">FastAPI backend</div>
+          <div class="phase-item">Authentication + user management</div>
+          <div class="phase-item">Supabase secure storage</div>
+          <div class="phase-item">Web UI for all four workflows</div>
+          <div class="phase-item">Stripe billing integration</div>
+          <div class="phase-item">Railway cloud deployment</div>
+        </div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 3</div>
+        <div class="phase-title">AI Platform</div>
+        <div class="phase-timeline">Months 6–12</div>
+        <div class="phase-status future-status">Planned</div>
+        <div class="phase-items">
+          <div class="phase-item">AI document classification</div>
+          <div class="phase-item">Smart fund matching</div>
+          <div class="phase-item">FMV dashboard from cap statements</div>
+          <div class="phase-item">Natural language portfolio queries</div>
+          <div class="phase-item">Document custody vault</div>
+          <div class="phase-item">SOC 2 Type I</div>
+        </div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">Phase 4</div>
+        <div class="phase-title">Enterprise</div>
+        <div class="phase-timeline">Months 12–18</div>
+        <div class="phase-status future-status">Planned</div>
+        <div class="phase-items">
+          <div class="phase-item">Addepar integration</div>
+          <div class="phase-item">Allvue wire templates</div>
+          <div class="phase-item">LP self-service portal</div>
+          <div class="phase-item">White-label for fund admins</div>
+          <div class="phase-item">SOC 2 Type II</div>
+          <div class="phase-item">Enterprise SLAs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
 <section class="light" id="who">
   <div class="who-inner">
     <div class="who-top reveal">
@@ -384,10 +544,7 @@ footer {
 <div class="cta-outer" id="early-access">
   <div class="cta-glow"></div>
   <div class="cta-inner reveal">
-    <div class="hero-tag" style="margin:0 auto 24px;">
-      <div class="hero-tag-dot"></div>
-      Limited spots available
-    </div>
+    <div class="hero-tag" style="margin:0 auto 24px;"><div class="hero-tag-dot"></div>Limited spots available</div>
     <h2 class="cta-title">Be among the first to run your ops on HighTraverse.</h2>
     <p class="cta-sub">We're onboarding a small group of design partners. If your team processes capital calls or distributions manually today, we want to talk.</p>
     <form class="email-form" action="https://formspree.io/f/xzdyzoel" method="POST" onsubmit="handleSubmit(event)">
@@ -403,7 +560,6 @@ footer {
   <div class="footer-logo">High<span>Traverse</span></div>
   <div class="footer-right">
     <div class="footer-note">© 2026 HighTraverse · hightraverse.co</div>
-    <!-- The only Alta reference: coordinates, invisible unless you look -->
     <div class="footer-coords">40.5883° N, 111.6358° W</div>
   </div>
 </footer>
@@ -418,15 +574,20 @@ const obs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.07 });
 document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+
+function showTab(event, tabId) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tabId).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
 async function handleSubmit(e) {
   e.preventDefault();
   const form = e.target;
   const data = new FormData(form);
   try {
-    const res = await fetch('https://formspree.io/f/xzdyzoel', {
-      method: 'POST', body: data,
-      headers: { 'Accept': 'application/json' }
-    });
+    const res = await fetch('https://formspree.io/f/xzdyzoel', { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
     if (res.ok) {
       document.querySelector('.email-form').style.display = 'none';
       document.getElementById('form-note').style.display = 'none';
