@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HighTraverse — Private Markets Operations, Automated</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #080c14;
+  --ink-2: #0f1520;
+  --ink-3: #1a2235;
+  --surface: #f4f5f7;
+  --surface-2: #ffffff;
+  --text: #0d1117;
+  --text-muted: rgba(13,17,23,0.52);
+  --accent: #2563eb;
+  --accent-dim: rgba(37,99,235,0.12);
+  --accent-glow: rgba(37,99,235,0.25);
+  --white: #ffffff;
+  --white-dim: rgba(255,255,255,0.6);
+  --white-dimmer: rgba(255,255,255,0.35);
+  --border-dark: rgba(255,255,255,0.08);
+  --border-light: rgba(13,17,23,0.1);
+  --border-accent: rgba(37,99,235,0.3);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--ink); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 24px 56px;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: background 0.4s, padding 0.3s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  background: rgba(8,12,20,0.94);
+  backdrop-filter: blur(16px);
+  padding: 16px 56px;
+  border-color: var(--border-dark);
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--white); text-decoration: none;
+  letter-spacing: -0.01em;
+}
+.logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 400;
+  color: var(--white-dimmer); text-decoration: none;
+  letter-spacing: 0.01em; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-cta {
+  color: var(--white) !important; background: var(--accent);
+  padding: 9px 22px; border-radius: 6px;
+  font-weight: 500 !important; font-size: 13px !important;
+  transition: background 0.2s, transform 0.15s !important;
+}
+.nav-cta:hover { background: #1d4ed8 !important; transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; background: var(--ink);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 140px 56px 100px;
+  position: relative; overflow: hidden;
+}
+
+/* Subtle grid */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* Blue glow */
+.hero-glow {
+  position: absolute; top: 15%; left: 52%;
+  width: 640px; height: 520px;
+  background: radial-gradient(ellipse, rgba(37,99,235,0.16) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* THE SUBTLE ALTA NOD — faint ridgeline silhouette, barely visible */
+.ridge-svg {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  width: 100%; height: 55%;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(37,99,235,0.12);
+  border: 1px solid var(--border-accent);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 12px; font-weight: 400; color: #93b4fd;
+  letter-spacing: 0.04em; margin-bottom: 32px; width: fit-content;
+  opacity: 0; animation: fadeUp 0.8s forwards 0.2s;
+}
+
+.hero-tag-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); animation: pulse 2s infinite;
+}
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+.hero-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(44px, 6.5vw, 84px);
+  font-weight: 700; line-height: 1.0;
+  letter-spacing: -0.03em; color: var(--white);
+  margin-bottom: 28px; max-width: 800px;
+  opacity: 0; animation: fadeUp 0.8s forwards 0.4s;
+}
+.hero-title .accent { color: var(--accent); }
+.hero-title .dim { color: var(--white-dim); font-weight: 400; }
+
+.hero-sub {
+  font-size: 18px; font-weight: 300; color: var(--white-dim);
+  line-height: 1.75; max-width: 540px; margin-bottom: 44px;
+  opacity: 0; animation: fadeUp 0.8s forwards 0.6s;
+}
+
+.hero-actions {
+  display: flex; gap: 14px; align-items: center;
+  opacity: 0; animation: fadeUp 0.8s forwards 0.8s;
+}
+
+.btn-primary {
+  background: var(--accent); color: var(--white);
+  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500;
+  padding: 14px 32px; border: none; border-radius: 8px; cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  text-decoration: none; display: inline-block;
+}
+.btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-glow); }
+
+.btn-secondary {
+  background: rgba(255,255,255,0.06); color: var(--white-dim);
+  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400;
+  padding: 14px 28px; border: 1px solid var(--border-dark); border-radius: 8px;
+  cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+  text-decoration: none; display: inline-block;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--white); border-color: rgba(255,255,255,0.16); }
+
+.hero-stats {
+  display: flex; gap: 0; margin-top: 80px;
+  border-top: 1px solid var(--border-dark); padding-top: 40px;
+  opacity: 0; animation: fadeUp 0.8s forwards 1s;
+}
+.hstat { flex: 1; padding-right: 40px; border-right: 1px solid var(--border-dark); margin-right: 40px; }
+.hstat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+.hstat-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 700; color: var(--white); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+.hstat-num span { color: var(--accent); }
+.hstat-label { font-size: 12px; font-weight: 400; color: var(--white-dimmer); letter-spacing: 0.02em; }
+
+/* ── TRANSITION ── */
+.transition-section { height: 180px; background: linear-gradient(180deg, var(--ink) 0%, var(--surface) 100%); }
+
+/* ── LIGHT SECTIONS ── */
+.light { background: var(--surface); color: var(--text); }
+.light-white { background: var(--surface-2); color: var(--text); }
+section { padding: 100px 56px; }
+
+.section-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.section-title { font-family: 'Syne', sans-serif; font-size: clamp(30px, 4vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 18px; color: var(--text); }
+.section-sub { font-size: 16px; font-weight: 300; color: var(--text-muted); line-height: 1.75; max-width: 460px; }
+
+/* ── PROBLEM ── */
+.problem-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: start; }
+.pain-list { margin-top: 44px; }
+.pain-item { display: flex; gap: 20px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border-light); }
+.pain-item:first-child { border-top: 1px solid var(--border-light); }
+.pain-num { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; min-width: 28px; padding-top: 2px; }
+.pain-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+.pain-desc { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
+.comp-wrap { margin-top: 44px; display: flex; flex-direction: column; gap: 10px; }
+.comp-card { padding: 28px 32px; border-radius: 12px; border: 1px solid var(--border-light); background: var(--surface-2); }
+.comp-card.good { border-color: var(--border-accent); background: var(--accent-dim); }
+.comp-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; }
+.comp-num { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--text); }
+.comp-card.good .comp-num { color: var(--accent); }
+.comp-note { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+.comp-vs { text-align: center; font-size: 13px; font-weight: 400; color: var(--text-muted); letter-spacing: 0.06em; padding: 2px 0; }
+.saving-card { padding: 24px 32px; background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; }
+.saving-text { font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
+.saving-text strong { color: var(--accent); font-weight: 600; }
+
+/* ── FEATURES ── */
+.features-inner { max-width: 1180px; margin: 0 auto; }
+.features-top { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; padding-bottom: 56px; border-bottom: 1px solid var(--border-light); }
+.features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border-light); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; }
+.feature { background: var(--surface-2); padding: 36px 32px; transition: background 0.2s; }
+.feature:hover { background: var(--surface); }
+.feature-num { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 16px; }
+.feature-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; }
+.feature-desc { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
+.feature-badge { display: inline-block; margin-top: 14px; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: var(--accent-dim); padding: 3px 10px; border-radius: 100px; }
+.feature-badge.soon { color: var(--text-muted); background: rgba(13,17,23,0.06); }
+
+/* ── WHO ── */
+.who-inner { max-width: 1180px; margin: 0 auto; }
+.who-top { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px; }
+.seg-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+.seg { padding: 32px; background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; transition: border-color 0.2s, box-shadow 0.2s; }
+.seg:hover { border-color: var(--border-accent); box-shadow: 0 4px 20px rgba(37,99,235,0.08); }
+.seg-icon { width: 36px; height: 36px; background: var(--accent-dim); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; font-size: 16px; }
+.seg-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
+.seg-desc { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.65; }
+
+/* ── CTA ── */
+.cta-outer { background: var(--ink); padding: 120px 56px; position: relative; overflow: hidden; }
+.cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(37,99,235,0.15) 0%, transparent 70%); pointer-events: none; }
+.cta-inner { max-width: 600px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+.cta-title { font-family: 'Syne', sans-serif; font-size: clamp(30px, 4vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin-bottom: 16px; }
+.cta-sub { font-size: 16px; font-weight: 300; color: var(--white-dim); line-height: 1.7; margin-bottom: 40px; }
+.email-form { display: flex; background: rgba(255,255,255,0.06); border: 1px solid var(--border-dark); border-radius: 10px; overflow: hidden; transition: border-color 0.2s; }
+.email-form:focus-within { border-color: var(--accent); }
+.email-form input { flex: 1; background: transparent; border: none; padding: 16px 20px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 300; color: var(--white); outline: none; }
+.email-form input::placeholder { color: var(--white-dimmer); }
+.email-form button { background: var(--accent); color: var(--white); border: none; padding: 16px 28px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+.email-form button:hover { background: #1d4ed8; }
+.form-note { font-size: 12px; color: var(--white-dimmer); margin-top: 12px; }
+
+/* ── FOOTER — subtle Alta coordinates as the only nod ── */
+footer {
+  background: var(--ink-2); padding: 36px 56px;
+  border-top: 1px solid var(--border-dark);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-logo { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: -0.01em; }
+.footer-logo span { color: var(--accent); }
+.footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+.footer-note { font-size: 12px; color: var(--white-dimmer); }
+.footer-coords {
+  font-size: 11px; color: rgba(255,255,255,0.18);
+  letter-spacing: 0.08em; font-family: 'Inter', monospace;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+.reveal { opacity:0; transform:translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+@media (max-width:768px) {
+  nav { padding: 18px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 120px 24px 80px; }
+  .hero-stats { flex-wrap: wrap; }
+  .hstat { flex: 1 1 40%; margin-right: 0; border-right: none; padding-right: 0; margin-bottom: 20px; }
+  section { padding: 72px 24px; }
+  .cta-outer { padding: 80px 24px; }
+  .problem-inner,.features-top,.who-top { grid-template-columns: 1fr; gap: 44px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .seg-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+  .footer-right { align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="logo">High<span>Traverse</span></a>
+  <ul class="nav-links">
+    <li><a href="#features">Platform</a></li>
+    <li><a href="#who">Who it's for</a></li>
+    <li><a href="#early-access" class="nav-cta">Request Access</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+
+  <!-- THE SUBTLE ALTA NOD: pure ridge geometry, barely visible at 4% opacity -->
+  <svg class="ridge-svg" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 400 L0 300 L60 280 L120 295 L180 260 L220 272 L260 240 L300 255 L340 220 L385 238 L430 195 L468 210 L506 175 L534 188 L562 165 L590 178 L620 148 L655 162 L690 130 L725 148 L760 165 L795 145 L830 162 L865 178 L900 158 L935 175 L970 192 L1005 172 L1040 188 L1075 210 L1110 188 L1145 215 L1180 242 L1215 218 L1250 242 L1285 268 L1320 245 L1375 272 L1440 290 L1440 400 Z"
+      fill="white" opacity="1"/>
+  </svg>
+
+  <div class="hero-tag">
+    <div class="hero-tag-dot"></div>
+    Now in early access
+  </div>
+
+  <h1 class="hero-title">
+    Private markets ops,<br>
+    <span class="dim">finally</span> <span class="accent">automated.</span>
+  </h1>
+
+  <p class="hero-sub">
+    HighTraverse ingests your capital calls and distribution notices, allocates to every LP automatically, generates the memos and wires, and gives you a live dashboard of every fund's value — all in one secure platform.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#early-access" class="btn-primary">Request Early Access</a>
+    <a href="#features" class="btn-secondary">See the platform →</a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-num">2<span>hrs</span></div><div class="hstat-label">Saved per capital call</div></div>
+    <div class="hstat"><div class="hstat-num">3</div><div class="hstat-label">Core workflows automated</div></div>
+    <div class="hstat"><div class="hstat-num">100<span>%</span></div><div class="hstat-label">Audit trail on every document</div></div>
+    <div class="hstat"><div class="hstat-num">0</div><div class="hstat-label">Manual allocation errors</div></div>
+  </div>
+</section>
+
+<div class="transition-section"></div>
+
+<section class="light">
+  <div class="problem-inner">
+    <div class="reveal">
+      <span class="section-tag">The problem</span>
+      <h2 class="section-title">Your ops team is spending days on work that should take minutes.</h2>
+      <p class="section-sub">Every capital call triggers the same chain of manual steps — for every fund, every investor, every quarter.</p>
+      <div class="pain-list">
+        <div class="pain-item"><div class="pain-num">01</div><div><div class="pain-title">Manual PDF processing</div><div class="pain-desc">Capital calls arrive as PDFs. Someone downloads, renames, and re-enters the data by hand into a spreadsheet.</div></div></div>
+        <div class="pain-item"><div class="pain-num">02</div><div><div class="pain-title">Allocation in Excel</div><div class="pain-desc">Ownership percentages calculated manually. One wrong cell affects every investor's number.</div></div></div>
+        <div class="pain-item"><div class="pain-num">03</div><div><div class="pain-title">Memo drafting in Word</div><div class="pain-desc">Capital call and distribution memos written one by one from templates. Copy, paste, update — for every LP.</div></div></div>
+        <div class="pain-item"><div class="pain-num">04</div><div><div class="pain-title">Wire setup by hand</div><div class="pain-desc">Bank details pulled from spreadsheets, wires set up manually. No approval workflow, no audit trail.</div></div></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="section-tag">The difference</span>
+      <div class="comp-wrap">
+        <div class="comp-card"><div class="comp-label">Time spent today — per capital call</div><div class="comp-num" style="color:#c0392b;">2–4 hrs</div><div class="comp-note">Manual, error-prone, no audit trail</div></div>
+        <div class="comp-vs">versus</div>
+        <div class="comp-card good"><div class="comp-label">Time with HighTraverse</div><div class="comp-num">&lt;10 min</div><div class="comp-note">Automated, accurate, every step logged</div></div>
+        <div class="saving-card"><div class="comp-label" style="margin-bottom:10px;">What that means annually</div><div class="saving-text">A firm processing 50 capital calls per year saves <strong>150+ hours</strong> of ops time — nearly a full month of work, eliminated entirely.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="light-white" id="features">
+  <div class="features-inner">
+    <div class="features-top reveal">
+      <div><span class="section-tag">The platform</span><h2 class="section-title">From notice to wire, without touching a spreadsheet.</h2></div>
+      <p class="section-sub">Every step of your capital call and distribution workflow, automated. Built for the way private markets operations actually work.</p>
+    </div>
+    <div class="features-grid reveal">
+      <div class="feature"><div class="feature-num">01</div><div class="feature-title">Document ingestion</div><div class="feature-desc">Capital calls and distribution notices arrive via email or upload. Fund name, amount, and date extracted automatically. No manual data entry.</div><span class="feature-badge">Core</span></div>
+      <div class="feature"><div class="feature-num">02</div><div class="feature-title">Pro-rata allocation</div><div class="feature-desc">Every LP's share calculated instantly. Rounding handled correctly, reconciliation built in. Works across any fund structure — FoF, co-invest, direct.</div><span class="feature-badge">Core</span></div>
+      <div class="feature"><div class="feature-num">03</div><div class="feature-title">Memo generation</div><div class="feature-desc">Branded capital call and distribution memos generated for every LP automatically. What used to take hours per notice takes seconds.</div><span class="feature-badge">Core</span></div>
+      <div class="feature"><div class="feature-num">04</div><div class="feature-title">Wire automation</div><div class="feature-desc">Wire templates generated per transaction. Bank details stored securely. Approval workflow built in. Exportable to your bank in one click.</div><span class="feature-badge">Core</span></div>
+      <div class="feature"><div class="feature-num">05</div><div class="feature-title">Live ops dashboard</div><div class="feature-desc">Every capital call, distribution, and due date across all funds in one view. Capital statements ingested automatically — FMV per investment and per investor.</div><span class="feature-badge soon">Coming soon</span></div>
+      <div class="feature"><div class="feature-num">06</div><div class="feature-title">Secure document vault</div><div class="feature-desc">Every document encrypted, indexed, and stored permanently. Full audit trail on every action. Built for compliance from day one.</div><span class="feature-badge">Core</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="who">
+  <div class="who-inner">
+    <div class="who-top reveal">
+      <div><span class="section-tag">Who it's for</span><h2 class="section-title">Built for the teams doing this work today.</h2></div>
+      <p class="section-sub">Any firm managing LP relationships and alternative investment cash flows. Built across structures and strategies — not locked into one.</p>
+    </div>
+    <div class="seg-grid reveal">
+      <div class="seg"><div class="seg-icon">🏛</div><div class="seg-title">Family Offices</div><div class="seg-desc">Single and multi-family offices managing alternative investment portfolios. Replace the spreadsheets and Word templates your ops team relies on today.</div></div>
+      <div class="seg"><div class="seg-icon">📈</div><div class="seg-title">Private Equity & VC</div><div class="seg-desc">Fund managers and fund-of-funds with LP capital call and distribution workflows. Automate the back office without replacing your accounting system.</div></div>
+      <div class="seg"><div class="seg-icon">⚙️</div><div class="seg-title">Fund Administrators</div><div class="seg-desc">Fund admins servicing multiple clients. Process capital calls and distributions at scale. White-label available for enterprise accounts.</div></div>
+      <div class="seg"><div class="seg-icon">📊</div><div class="seg-title">Hedge Funds</div><div class="seg-desc">Multi-strategy and credit funds managing LP capital events. Full audit trail and document vault built for compliance-heavy environments.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-outer" id="early-access">
+  <div class="cta-glow"></div>
+  <div class="cta-inner reveal">
+    <div class="hero-tag" style="margin:0 auto 24px;">
+      <div class="hero-tag-dot"></div>
+      Limited spots available
+    </div>
+    <h2 class="cta-title">Be among the first to run your ops on HighTraverse.</h2>
+    <p class="cta-sub">We're onboarding a small group of design partners. If your team processes capital calls or distributions manually today, we want to talk.</p>
+    <form class="email-form" onsubmit="handleSubmit(event)">
+      <input type="email" placeholder="your@firm.com" required id="email-input">
+      <button type="submit">Request Access</button>
+    </form>
+    <p class="form-note" id="form-note">No commitment. We'll reach out to schedule a 30-minute call.</p>
+    <p id="form-success" style="display:none;color:#93b4fd;font-size:16px;margin-top:16px;">Thank you — we'll be in touch shortly.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">High<span>Traverse</span></div>
+  <div class="footer-right">
+    <div class="footer-note">© 2026 HighTraverse · hightraverse.co</div>
+    <!-- The only Alta reference: coordinates, invisible unless you look -->
+    <div class="footer-coords">40.5883° N, 111.6358° W</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+});
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
+function handleSubmit(e) {
+  e.preventDefault();
+  document.querySelector('.email-form').style.display = 'none';
+  document.getElementById('form-note').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+</script>
+</body>
+</html>
