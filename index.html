@@ -100,219 +100,226 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink: #080c14;
-  --ink-2: #0f1520;
-  --ink-3: #1a2235;
-  --surface: #f4f5f7;
-  --surface-2: #ffffff;
-  --text: #0d1117;
-  --text-muted: rgba(13,17,23,0.52);
-  --accent: #2563eb;
-  --accent-dim: rgba(37,99,235,0.12);
-  --accent-glow: rgba(37,99,235,0.25);
-  --white: #ffffff;
-  --white-dim: rgba(255,255,255,0.6);
-  --white-dimmer: rgba(255,255,255,0.35);
-  --border-dark: rgba(255,255,255,0.08);
-  --border-light: rgba(13,17,23,0.1);
-  --border-accent: rgba(37,99,235,0.3);
+  --bg:       #f8f7f4;
+  --bg-dark:  #111111;
+  --white:    #ffffff;
+  --text:     #111111;
+  --muted:    #6b7280;
+  --accent:   #1d4ed8;
+  --accent-lt:#eff6ff;
+  --border:   #e4e2dd;
+  --border-dk:rgba(255,255,255,0.10);
+  --green:    #16a34a;
+  --amber:    #d97706;
+  --red:      #dc2626;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { background: var(--ink); color: var(--white); font-family: 'Inter', sans-serif; font-weight: 300; overflow-x: hidden; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-weight: 400; overflow-x: hidden; }
 
 /* NAV */
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 56px; display: flex; justify-content: space-between; align-items: center; transition: background 0.4s, padding 0.3s, border-color 0.4s; border-bottom: 1px solid transparent; }
-nav.scrolled { background: rgba(8,12,20,0.94); backdrop-filter: blur(16px); padding: 16px 56px; border-color: var(--border-dark); }
-.logo { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: -0.01em; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 22px 56px; display: flex; justify-content: space-between; align-items: center; background: transparent; transition: background 0.3s, border-color 0.3s; border-bottom: 1px solid transparent; }
+nav.scrolled { background: var(--bg-dark); border-color: var(--border-dk); padding: 16px 56px; }
+.logo { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); text-decoration: none; }
 .logo span { color: var(--accent); }
 .nav-links { display: flex; gap: 36px; align-items: center; list-style: none; }
-.nav-links a { font-size: 13px; font-weight: 400; color: var(--white-dimmer); text-decoration: none; letter-spacing: 0.01em; transition: color 0.2s; }
+.nav-links a { font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
 .nav-links a:hover { color: var(--white); }
-.nav-cta { color: var(--white) !important; background: var(--accent); padding: 9px 22px; border-radius: 6px; font-weight: 500 !important; font-size: 13px !important; transition: background 0.2s, transform 0.15s !important; }
-.nav-cta:hover { background: #1d4ed8 !important; transform: translateY(-1px); }
+.nav-cta { color: var(--white) !important; background: var(--accent); padding: 9px 22px; border-radius: 6px; font-weight: 500 !important; transition: background 0.2s !important; }
+.nav-cta:hover { background: #1e40af !important; }
 
-/* HERO */
-.hero { min-height: 100vh; background: var(--ink); display: flex; flex-direction: column; justify-content: center; padding: 140px 56px 100px; position: relative; overflow: hidden; }
-.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%); }
-.hero-glow { position: absolute; top: 15%; left: 52%; width: 640px; height: 520px; background: radial-gradient(ellipse, rgba(37,99,235,0.16) 0%, transparent 70%); pointer-events: none; }
-.ridge-svg { position: absolute; bottom: 0; left: 0; right: 0; width: 100%; height: 55%; opacity: 0.04; pointer-events: none; }
-.hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(37,99,235,0.12); border: 1px solid var(--border-accent); border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 400; color: #93b4fd; letter-spacing: 0.04em; margin-bottom: 32px; width: fit-content; opacity: 0; animation: fadeUp 0.8s forwards 0.2s; }
-.hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-.hero-title { font-family: 'Syne', sans-serif; font-size: clamp(44px, 6.5vw, 84px); font-weight: 700; line-height: 1.0; letter-spacing: -0.03em; color: var(--white); margin-bottom: 28px; max-width: 860px; opacity: 0; animation: fadeUp 0.8s forwards 0.4s; }
-.hero-title .accent { color: var(--accent); }
-.hero-title .dim { color: var(--white-dim); font-weight: 400; }
-.hero-sub { font-size: 18px; font-weight: 300; color: var(--white-dim); line-height: 1.75; max-width: 560px; margin-bottom: 44px; opacity: 0; animation: fadeUp 0.8s forwards 0.6s; }
-.hero-actions { display: flex; gap: 14px; align-items: center; opacity: 0; animation: fadeUp 0.8s forwards 0.8s; }
-.btn-primary { background: var(--accent); color: var(--white); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 14px 32px; border: none; border-radius: 8px; cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; text-decoration: none; display: inline-block; }
-.btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 8px 24px var(--accent-glow); }
-.btn-secondary { background: rgba(255,255,255,0.06); color: var(--white-dim); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; padding: 14px 28px; border: 1px solid var(--border-dark); border-radius: 8px; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; text-decoration: none; display: inline-block; }
-.btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--white); border-color: rgba(255,255,255,0.16); }
-.hero-stats { display: flex; gap: 0; margin-top: 80px; border-top: 1px solid var(--border-dark); padding-top: 40px; opacity: 0; animation: fadeUp 0.8s forwards 1s; }
-.hstat { flex: 1; padding-right: 40px; border-right: 1px solid var(--border-dark); margin-right: 40px; }
+/* HERO — flat dark background, no glow, no grid */
+.hero { min-height: 100vh; background: var(--bg-dark); display: flex; flex-direction: column; justify-content: center; padding: 140px 56px 100px; }
+.hero-label { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 28px; }
+.hero-title { font-family: 'Syne', sans-serif; font-size: clamp(40px, 5.5vw, 72px); font-weight: 700; line-height: 1.05; letter-spacing: -0.025em; color: var(--white); margin-bottom: 24px; max-width: 820px; }
+.hero-sub { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.60); line-height: 1.7; max-width: 520px; margin-bottom: 44px; }
+.hero-actions { display: flex; gap: 14px; align-items: center; }
+.btn-primary { background: var(--accent); color: var(--white); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; padding: 13px 30px; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: #1e40af; }
+.btn-ghost { color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; padding: 13px 20px; border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; cursor: pointer; transition: color 0.2s, border-color 0.2s; text-decoration: none; display: inline-block; }
+.btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.28); }
+.hero-stats { display: flex; gap: 0; margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 40px; }
+.hstat { flex: 1; padding-right: 40px; border-right: 1px solid rgba(255,255,255,0.08); margin-right: 40px; }
 .hstat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-.hstat-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 700; color: var(--white); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+.hstat-num { font-family: 'Syne', sans-serif; font-size: 34px; font-weight: 700; color: var(--white); line-height: 1; margin-bottom: 6px; }
 .hstat-num span { color: var(--accent); }
-.hstat-label { font-size: 12px; font-weight: 400; color: var(--white-dimmer); letter-spacing: 0.02em; }
+.hstat-label { font-size: 12px; color: rgba(255,255,255,0.40); letter-spacing: 0.02em; }
 
-/* TRANSITION */
-.transition-section { height: 180px; background: linear-gradient(180deg, var(--ink) 0%, var(--surface) 100%); }
-
-/* SHARED */
-.light { background: var(--surface); color: var(--text); }
-.light-white { background: var(--surface-2); color: var(--text); }
-section { padding: 100px 56px; }
-.section-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-.section-title { font-family: 'Syne', sans-serif; font-size: clamp(30px, 4vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 18px; color: var(--text); }
-.section-sub { font-size: 16px; font-weight: 300; color: var(--text-muted); line-height: 1.75; max-width: 460px; }
+/* SHARED SECTION STYLES */
+section { padding: 96px 56px; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; display: block; }
+.section-title { font-family: 'Syne', sans-serif; font-size: clamp(26px, 3.5vw, 42px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 16px; }
+.section-sub { font-size: 16px; font-weight: 300; color: var(--muted); line-height: 1.7; max-width: 440px; }
+.inner { max-width: 1160px; margin: 0 auto; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.two-col-end { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
 
 /* PROBLEM */
-.problem-inner { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: start; }
-.pain-list { margin-top: 44px; }
-.pain-item { display: flex; gap: 20px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border-light); }
-.pain-item:first-child { border-top: 1px solid var(--border-light); }
-.pain-num { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; min-width: 28px; padding-top: 2px; }
-.pain-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
-.pain-desc { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
-.comp-wrap { margin-top: 44px; display: flex; flex-direction: column; gap: 10px; }
-.comp-card { padding: 28px 32px; border-radius: 12px; border: 1px solid var(--border-light); background: var(--surface-2); }
-.comp-card.good { border-color: var(--border-accent); background: var(--accent-dim); }
-.comp-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; }
-.comp-num { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--text); }
-.comp-card.good .comp-num { color: var(--accent); }
-.comp-note { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
-.comp-vs { text-align: center; font-size: 13px; font-weight: 400; color: var(--text-muted); letter-spacing: 0.06em; padding: 2px 0; }
-.saving-card { padding: 24px 32px; background: var(--surface-2); border: 1px solid var(--border-light); border-radius: 12px; }
-.saving-text { font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
-.saving-text strong { color: var(--accent); font-weight: 600; }
+.problem-wrap { background: var(--white); }
+.pain-list { margin-top: 40px; }
+.pain-item { display: flex; gap: 20px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border); }
+.pain-item:first-child { border-top: 1px solid var(--border); }
+.pain-num { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; min-width: 26px; padding-top: 2px; }
+.pain-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+.pain-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-/* USER TYPE TABS */
-.who-inner { max-width: 1180px; margin: 0 auto; }
-.who-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px; padding-bottom: 48px; border-bottom: 1px solid var(--border-dark); }
-.tab-bar { display: flex; gap: 4px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-dark); border-radius: 12px; padding: 5px; margin-bottom: 32px; }
-.tab-btn { flex: 1; padding: 12px 20px; background: transparent; border: none; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: var(--white-dimmer); cursor: pointer; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+.comp-wrap { display: flex; flex-direction: column; gap: 10px; }
+.comp-card { padding: 26px 28px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); }
+.comp-card.good { border-color: var(--accent); background: var(--accent-lt); }
+.comp-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.comp-num { font-family: 'Syne', sans-serif; font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--text); }
+.comp-card.good .comp-num { color: var(--accent); }
+.comp-note { font-size: 13px; color: var(--muted); margin-top: 5px; }
+.comp-vs { text-align: center; font-size: 12px; color: var(--muted); padding: 2px 0; }
+.saving-card { padding: 22px 28px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; }
+.saving-text { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.saving-text strong { color: var(--text); font-weight: 600; }
+
+/* WHO IT'S FOR — dark section */
+.who-wrap { background: var(--bg-dark); color: var(--white); }
+.who-header { margin-bottom: 52px; padding-bottom: 44px; border-bottom: 1px solid var(--border-dk); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+.tab-bar { display: flex; gap: 3px; background: rgba(255,255,255,0.04); border: 1px solid var(--border-dk); border-radius: 8px; padding: 4px; margin-bottom: 28px; }
+.tab-btn { flex: 1; padding: 10px 16px; background: transparent; border: none; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(255,255,255,0.45); cursor: pointer; transition: background 0.2s, color 0.2s; white-space: nowrap; }
 .tab-btn.active { background: var(--accent); color: var(--white); font-weight: 500; }
-.tab-btn:hover:not(.active) { color: var(--white); background: rgba(255,255,255,0.08); }
+.tab-btn:hover:not(.active) { color: var(--white); background: rgba(255,255,255,0.06); }
 .tab-panel { display: none; }
-.tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-.tab-left { display: flex; flex-direction: column; gap: 0; }
-.tab-desc { font-size: 15px; font-weight: 300; color: var(--white-dim); line-height: 1.75; margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border-dark); }
-.tab-workflows { display: flex; flex-direction: column; gap: 0; }
-.workflow-item { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border-dark); }
-.workflow-item:first-child { border-top: 1px solid var(--border-dark); }
-.wf-icon { width: 32px; height: 32px; background: var(--accent-dim); border: 1px solid var(--border-accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
+.tab-desc { font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--border-dk); }
+.tab-workflows { display: flex; flex-direction: column; }
+.workflow-item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--border-dk); }
+.workflow-item:first-child { border-top: 1px solid var(--border-dk); }
+.wf-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 6px; flex-shrink: 0; }
 .wf-title { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 3px; }
-.wf-desc { font-size: 12px; font-weight: 300; color: var(--white-dim); line-height: 1.6; }
-.wf-badge { display: inline-block; margin-top: 5px; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 100px; }
-.wf-badge.live { background: rgba(74,222,128,0.15); color: #4ade80; }
-.wf-badge.soon { background: rgba(255,255,255,0.06); color: var(--white-dimmer); }
-.tab-visual { background: rgba(255,255,255,0.03); border: 1px solid var(--border-dark); border-radius: 12px; padding: 28px; }
-.v-label { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white-dimmer); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
-.v-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
-.term-line { font-family: 'Inter', monospace; font-size: 12px; line-height: 1.8; color: var(--white-dimmer); }
+.wf-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+.wf-badge { display: inline-block; margin-top: 5px; font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; }
+.wf-badge.live { background: rgba(22,163,74,0.15); color: #4ade80; }
+.wf-badge.soon { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.35); }
+.tab-visual { background: rgba(255,255,255,0.03); border: 1px solid var(--border-dk); border-radius: 10px; padding: 24px; }
+.v-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+.term-line { font-family: 'Inter', monospace; font-size: 12px; line-height: 1.8; color: rgba(255,255,255,0.40); }
 .term-line .ok { color: #4ade80; }
-.term-line .label { color: #93b4fd; }
+.term-line .lbl { color: #93b4fd; }
 .term-line .val { color: var(--white); }
 .term-line .hi { color: #4ade80; font-weight: 500; }
-.doc-preview { display: flex; flex-direction: column; gap: 10px; }
-.doc-card { background: rgba(255,255,255,0.05); border: 1px solid var(--border-dark); border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 14px; }
-.doc-icon { font-size: 18px; }
-.doc-name { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: var(--white); margin-bottom: 2px; }
-.doc-meta { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--white-dimmer); }
-.doc-badge { margin-left: auto; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
-.doc-badge.green { background: rgba(74,222,128,0.15); color: #4ade80; }
-.doc-badge.amber { background: rgba(251,191,36,0.15); color: #fbbf24; }
-.doc-badge.blue { background: var(--accent-dim); color: #93b4fd; }
-.coming-soon-box { margin-top: 20px; background: rgba(37,99,235,0.06); border: 1px solid var(--border-accent); border-radius: 10px; padding: 16px 20px; }
-.cs-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #93b4fd; margin-bottom: 6px; }
-.cs-text { font-size: 12px; font-weight: 300; color: var(--white-dim); line-height: 1.6; }
+.doc-preview { display: flex; flex-direction: column; gap: 8px; }
+.doc-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border-dk); border-radius: 6px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; }
+.doc-name { font-size: 13px; color: var(--white); margin-bottom: 2px; }
+.doc-meta { font-size: 11px; color: rgba(255,255,255,0.40); }
+.doc-badge { margin-left: auto; font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+.doc-badge.green { background: rgba(22,163,74,0.15); color: #4ade80; }
+.doc-badge.amber { background: rgba(217,119,6,0.15); color: #fbbf24; }
+.doc-badge.blue  { background: rgba(29,78,216,0.20); color: #93b4fd; }
+.coming-box { margin-top: 16px; padding: 14px 18px; background: rgba(29,78,216,0.08); border: 1px solid rgba(29,78,216,0.25); border-radius: 8px; }
+.coming-box-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #93b4fd; margin-bottom: 5px; }
+.coming-box-text { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
 
-/* FEATURES */
-.features-inner { max-width: 1180px; margin: 0 auto; }
-.features-top { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; padding-bottom: 56px; border-bottom: 1px solid var(--border-light); }
-.features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border-light); border: 1px solid var(--border-light); border-radius: 16px; overflow: hidden; }
-.feature { background: var(--surface-2); padding: 36px 32px; transition: background 0.2s; }
-.feature:hover { background: var(--surface); }
-.feature-num { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 16px; }
-.feature-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 10px; letter-spacing: -0.01em; }
-.feature-desc { font-size: 13px; font-weight: 300; color: var(--text-muted); line-height: 1.7; }
-.feature-badge { display: inline-block; margin-top: 14px; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
-.feature-badge.live { color: #4ade80; background: rgba(74,222,128,0.12); }
-.feature-badge.soon { color: var(--text-muted); background: rgba(13,17,23,0.06); }
+/* PROOF SECTION — replaces 7-feature card grid */
+.proof-wrap { background: var(--bg); }
+.proof-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: start; }
+.feature-list { display: flex; flex-direction: column; gap: 0; margin-top: 40px; }
+.feature-item { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border); }
+.feature-item:first-child { border-top: 1px solid var(--border); }
+.feature-n { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 0.08em; min-width: 24px; padding-top: 2px; }
+.feature-text { }
+.feature-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+.feature-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.f-badge { display: inline-block; margin-top: 5px; font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; }
+.f-badge.live { background: rgba(22,163,74,0.10); color: var(--green); }
+.f-badge.soon { background: var(--bg); border: 1px solid var(--border); color: var(--muted); }
 
-/* ROADMAP */
-.roadmap-inner { max-width: 1180px; margin: 0 auto; }
-.roadmap-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light); }
-.roadmap-phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.phase-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border-dark); border-radius: 14px; padding: 28px 24px; }
-.phase-card.current { border-color: var(--border-accent); background: rgba(37,99,235,0.06); }
-.phase-card.done { border-color: rgba(74,222,128,0.25); background: rgba(74,222,128,0.04); }
-.phase-num { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white-dimmer); margin-bottom: 10px; }
-.phase-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 6px; letter-spacing: -0.01em; }
-.phase-timeline { font-size: 11px; font-weight: 400; color: var(--white-dimmer); margin-bottom: 18px; letter-spacing: 0.02em; }
-.phase-status { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; margin-bottom: 20px; }
-.phase-status.done-status { background: rgba(74,222,128,0.15); color: #4ade80; }
-.phase-status.active-status { background: var(--accent-dim); color: #93b4fd; }
-.phase-status.future-status { background: rgba(255,255,255,0.06); color: var(--white-dimmer); }
-.phase-items { display: flex; flex-direction: column; gap: 8px; }
-.phase-item { font-size: 12px; font-weight: 300; color: var(--white-dimmer); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
-.phase-item::before { content: "·"; color: var(--accent); font-weight: 700; flex-shrink: 0; }
-.phase-item.done-item { color: rgba(255,255,255,0.5); }
+/* Product UI mockup */
+.product-mockup { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--white); }
+.mock-bar { background: #f1f0ec; border-bottom: 1px solid var(--border); padding: 10px 16px; display: flex; align-items: center; gap: 8px; }
+.mock-dot { width: 10px; height: 10px; border-radius: 50%; }
+.mock-title-bar { font-size: 12px; color: var(--muted); margin-left: 8px; }
+.mock-sidebar { float: left; width: 160px; background: #1a2235; height: 100%; padding: 20px 16px; min-height: 460px; }
+.mock-sidebar-logo { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 20px; }
+.mock-nav-item { font-size: 12px; color: rgba(255,255,255,0.45); padding: 8px 10px; border-radius: 6px; margin-bottom: 2px; }
+.mock-nav-item.active { background: rgba(29,78,216,0.25); color: var(--white); font-weight: 500; }
+.mock-main { margin-left: 160px; padding: 20px 24px; min-height: 460px; }
+.mock-heading { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.mock-sub { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+.mock-status { display: flex; align-items: center; gap: 8px; padding: 10px 14px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; margin-bottom: 16px; font-size: 12px; color: var(--green); font-weight: 500; }
+.mock-status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.mock-warn { display: flex; align-items: flex-start; gap: 8px; padding: 10px 14px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 6px; margin-bottom: 16px; font-size: 12px; color: var(--amber); font-weight: 500; }
+.mock-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 16px; }
+.mock-table th { text-align: left; padding: 7px 10px; background: #f8f7f4; border-bottom: 1px solid var(--border); color: var(--muted); font-weight: 500; font-size: 11px; letter-spacing: 0.04em; }
+.mock-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); color: var(--text); }
+.mock-table tr:last-child td { border-bottom: none; }
+.mock-table .amt { font-family: 'Inter', monospace; }
+.mock-table .total-row td { font-weight: 600; background: #f8f7f4; }
+.mock-dl { display: flex; gap: 8px; flex-wrap: wrap; }
+.mock-btn { padding: 8px 14px; border-radius: 6px; font-size: 11px; font-weight: 500; border: 1px solid var(--border); background: var(--bg); color: var(--text); cursor: default; }
+.mock-btn.primary { background: var(--accent); color: var(--white); border-color: var(--accent); }
+.mock-caption { font-size: 11px; color: var(--muted); margin-top: 14px; text-align: center; font-style: italic; }
+
+/* ROADMAP — dark */
+.roadmap-wrap { background: var(--bg-dark); color: var(--white); }
+.roadmap-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px; padding-bottom: 44px; border-bottom: 1px solid var(--border-dk); }
+.roadmap-phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.phase-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border-dk); border-radius: 10px; padding: 26px 22px; }
+.phase-card.done { border-color: rgba(74,222,128,0.20); background: rgba(74,222,128,0.03); }
+.phase-card.current { border-color: rgba(29,78,216,0.40); background: rgba(29,78,216,0.05); }
+.phase-num { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
+.phase-title { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+.phase-timeline { font-size: 11px; color: rgba(255,255,255,0.35); margin-bottom: 14px; }
+.phase-status { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; margin-bottom: 18px; }
+.phase-status.done-s  { background: rgba(74,222,128,0.12); color: #4ade80; }
+.phase-status.active-s { background: rgba(29,78,216,0.20); color: #93b4fd; }
+.phase-status.future-s { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.35); }
+.phase-items { display: flex; flex-direction: column; gap: 7px; }
+.phase-item { font-size: 12px; color: rgba(255,255,255,0.40); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+.phase-item::before { content: "·"; color: rgba(29,78,216,0.6); font-weight: 700; flex-shrink: 0; }
+.phase-item.done-item { color: rgba(255,255,255,0.35); }
 .phase-item.done-item::before { content: "✓"; color: #4ade80; font-size: 10px; padding-top: 1px; }
 
-/* CTA */
-.cta-outer { background: var(--ink); padding: 120px 56px; position: relative; overflow: hidden; }
-.cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(37,99,235,0.15) 0%, transparent 70%); pointer-events: none; }
-.cta-inner { max-width: 600px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-.cta-title { font-family: 'Syne', sans-serif; font-size: clamp(30px, 4vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin-bottom: 16px; }
-.cta-sub { font-size: 16px; font-weight: 300; color: var(--white-dim); line-height: 1.7; margin-bottom: 40px; }
-.email-form { display: flex; background: rgba(255,255,255,0.06); border: 1px solid var(--border-dark); border-radius: 10px; overflow: hidden; transition: border-color 0.2s; }
+/* CTA — flat dark */
+.cta-wrap { background: var(--bg-dark); padding: 100px 56px; border-top: 1px solid var(--border-dk); }
+.cta-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+.cta-title { font-family: 'Syne', sans-serif; font-size: clamp(26px, 3.5vw, 40px); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; color: var(--white); margin-bottom: 14px; }
+.cta-sub { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.50); line-height: 1.7; margin-bottom: 36px; }
+.email-form { display: flex; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; overflow: hidden; transition: border-color 0.2s; }
 .email-form:focus-within { border-color: var(--accent); }
-.email-form input { flex: 1; background: transparent; border: none; padding: 16px 20px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 300; color: var(--white); outline: none; }
-.email-form input::placeholder { color: var(--white-dimmer); }
-.email-form button { background: var(--accent); color: var(--white); border: none; padding: 16px 28px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
-.email-form button:hover { background: #1d4ed8; }
-.form-note { font-size: 12px; color: var(--white-dimmer); margin-top: 12px; }
+.email-form input { flex: 1; background: transparent; border: none; padding: 15px 18px; font-family: 'Inter', sans-serif; font-size: 14px; color: var(--white); outline: none; }
+.email-form input::placeholder { color: rgba(255,255,255,0.30); }
+.email-form button { background: var(--accent); color: var(--white); border: none; padding: 15px 26px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+.email-form button:hover { background: #1e40af; }
+.form-note { font-size: 12px; color: rgba(255,255,255,0.28); margin-top: 12px; }
 
 /* FOOTER */
-footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var(--border-dark); display: flex; justify-content: space-between; align-items: center; }
-.footer-logo { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: -0.01em; }
+footer { background: var(--bg-dark); border-top: 1px solid var(--border-dk); padding: 32px 56px; display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--white); }
 .footer-logo span { color: var(--accent); }
-.footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-.footer-note { font-size: 12px; color: var(--white-dimmer); }
-.footer-coords { font-size: 11px; color: rgba(255,255,255,0.18); letter-spacing: 0.08em; font-family: 'Inter', monospace; }
+.footer-note { font-size: 12px; color: rgba(255,255,255,0.25); }
 
 /* ANIMATIONS */
-@keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
-.reveal { opacity:0; transform:translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity:1; transform:none; }
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
 
-@media (max-width:900px) {
+/* RESPONSIVE */
+@media (max-width: 900px) {
   .roadmap-phases { grid-template-columns: 1fr 1fr; }
   .tab-panel.active { grid-template-columns: 1fr; }
-  .who-header { grid-template-columns: 1fr; gap: 32px; }
+  .who-header { grid-template-columns: 1fr; gap: 28px; }
 }
-@media (max-width:768px) {
+@media (max-width: 768px) {
   nav { padding: 18px 24px; }
   nav.scrolled { padding: 14px 24px; }
   .nav-links { display: none; }
   .hero { padding: 120px 24px 80px; }
   .hero-stats { flex-wrap: wrap; }
   .hstat { flex: 1 1 40%; margin-right: 0; border-right: none; padding-right: 0; margin-bottom: 20px; }
-  section { padding: 72px 24px; }
-  .cta-outer { padding: 80px 24px; }
-  .problem-inner,.features-top,.roadmap-header { grid-template-columns: 1fr; gap: 44px; }
-  .features-grid { grid-template-columns: 1fr; }
+  section { padding: 64px 24px; }
+  .cta-wrap { padding: 72px 24px; }
+  .two-col, .two-col-end, .proof-layout, .roadmap-header { grid-template-columns: 1fr; gap: 36px; }
   .tab-bar { flex-direction: column; }
-  footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
-  .footer-right { align-items: center; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 24px; }
 }
-@media (max-width:480px) {
+@media (max-width: 480px) {
   .roadmap-phases { grid-template-columns: 1fr; }
 }
 </style>
@@ -323,7 +330,7 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
   <a href="#" class="logo">High<span>Traverse</span></a>
   <ul class="nav-links">
     <li><a href="#who-it-works-for">Who it's for</a></li>
-    <li><a href="#features">Platform</a></li>
+    <li><a href="#features">What it does</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#early-access" class="nav-cta">Request Access</a></li>
   </ul>
@@ -331,74 +338,101 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
 
 <main>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <svg class="ridge-svg" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 400 L0 300 L60 280 L120 295 L180 260 L220 272 L260 240 L300 255 L340 220 L385 238 L430 195 L468 210 L506 175 L534 188 L562 165 L590 178 L620 148 L655 162 L690 130 L725 148 L760 165 L795 145 L830 162 L865 178 L900 158 L935 175 L970 192 L1005 172 L1040 188 L1075 210 L1110 188 L1145 215 L1180 242 L1215 218 L1250 242 L1285 268 L1320 245 L1375 272 L1440 290 L1440 400 Z" fill="white" opacity="1"/>
-  </svg>
-
   <header class="hero-header">
-  <div class="hero-tag"><div class="hero-tag-dot"></div>Now in early access</div>
+    <div class="hero-label">Early access — now live</div>
 
-  <h1 class="hero-title">
-    Private markets ops,<br>
-    <span class="dim">finally</span> <span class="accent">automated.</span>
-  </h1>
+    <h1 class="hero-title">Capital calls and LP memos,<br>handled automatically.</h1>
 
-  <p class="hero-sub">Whether you're an individual investor managing capital calls, a fund issuing notices to LPs, or a fund of funds sitting in the middle — HighTraverse automates the work so you don't have to.</p>
+    <p class="hero-sub">Upload a capital call notice PDF. HighTraverse reads it, calculates each LP's pro-rata allocation, and generates all the documents — memos, wire templates, distribution notices. No spreadsheet, no manual data entry.</p>
 
-  <div class="hero-actions">
-    <a href="#early-access" class="btn-primary">Request Early Access</a>
-    <a href="#who-it-works-for" class="btn-secondary">See how it works →</a>
-  </div>
+    <div class="hero-actions">
+      <a href="#early-access" class="btn-primary">Request Early Access</a>
+      <a href="#who-it-works-for" class="btn-ghost">See how it works</a>
+    </div>
 
-  <dl class="hero-stats">
-    <div class="hstat"><dt class="hstat-num">2<span>hrs</span></dt><dd class="hstat-label">Saved per capital call</dd></div>
-    <div class="hstat"><dt class="hstat-num">4</dt><dd class="hstat-label">Core workflows live</dd></div>
-    <div class="hstat"><dt class="hstat-num">100<span>%</span></dt><dd class="hstat-label">Audit trail on every document</dd></div>
-    <div class="hstat"><dt class="hstat-num">0</dt><dd class="hstat-label">Manual allocation errors</dd></div>
-  </dl>
+    <dl class="hero-stats">
+      <div class="hstat"><dt class="hstat-num">2<span>hrs</span></dt><dd class="hstat-label">Saved per capital call event</dd></div>
+      <div class="hstat"><dt class="hstat-num">4</dt><dd class="hstat-label">Workflows live today</dd></div>
+      <div class="hstat"><dt class="hstat-num">100<span>%</span></dt><dd class="hstat-label">Audit trail on every document</dd></div>
+      <div class="hstat"><dt class="hstat-num">0</dt><dd class="hstat-label">Manual allocation errors</dd></div>
+    </dl>
   </header>
 </section>
 
-<div class="transition-section"></div>
-
 <!-- PROBLEM -->
-<section class="light">
-  <div class="problem-inner">
-    <div class="reveal">
-      <span class="section-tag">The problem</span>
-      <h2 class="section-title">The same manual work, every single capital event.</h2>
-      <p class="section-sub">Every capital call or distribution triggers the same chain of steps — regardless of where you sit in the fund structure.</p>
-      <ol class="pain-list">
-        <li class="pain-item"><div class="pain-num">01</div><div><h3 class="pain-title">Manual PDF processing</h3><div class="pain-desc">Notices arrive as PDFs. Someone reads them, pulls out the numbers, and re-enters the data by hand.</div></div></div>
-        <li class="pain-item"><div class="pain-num">02</div><div><h3 class="pain-title">Calculations in Excel</h3><div class="pain-desc">Allocations, ownership percentages, and distribution amounts calculated manually. One wrong cell ripples everywhere.</div></div></div>
-        <li class="pain-item"><div class="pain-num">03</div><div><h3 class="pain-title">Documents drafted in Word</h3><div class="pain-desc">Notices and memos written one by one from templates. Copy, paste, update — for every LP, every time.</div></div></div>
-        <li class="pain-item"><div class="pain-num">04</div><div><h3 class="pain-title">Wires set up by hand</h3><div class="pain-desc">Bank details pulled from spreadsheets, wires initiated manually. No verification, no audit trail, no protection against fraud.</div></div></div>
+<section class="problem-wrap" id="problem">
+  <div class="inner">
+    <div class="two-col reveal">
+      <div>
+        <span class="section-label">The problem</span>
+        <h2 class="section-title">Every capital event means the same manual work.</h2>
+        <p class="section-sub">A notice arrives. Someone opens Excel, does the math, writes the memos, and sets up the wires by hand. Then it happens again next quarter.</p>
+        <ol class="pain-list">
+          <li class="pain-item">
+            <div class="pain-num">01</div>
+            <div>
+              <h3 class="pain-title">Reading PDFs and re-entering data</h3>
+              <div class="pain-desc">Notices arrive as PDFs. Someone reads them, pulls out the numbers, and types them into a spreadsheet.</div>
+            </div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-num">02</div>
+            <div>
+              <h3 class="pain-title">Calculating allocations in Excel</h3>
+              <div class="pain-desc">Ownership percentages, pro-rata shares, and rounding — all done by hand. One wrong cell affects every LP.</div>
+            </div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-num">03</div>
+            <div>
+              <h3 class="pain-title">Writing notices one at a time</h3>
+              <div class="pain-desc">Capital call memos and distribution notices drafted from templates in Word. Copy, paste, update — once per LP, every time.</div>
+            </div>
+          </li>
+          <li class="pain-item">
+            <div class="pain-num">04</div>
+            <div>
+              <h3 class="pain-title">Setting up wires manually</h3>
+              <div class="pain-desc">Bank details pulled from a spreadsheet and entered by hand. No check against prior instructions, no protection if the details have changed.</div>
+            </div>
+          </li>
+        </ol>
       </div>
-    </div>
-    <div class="reveal">
-      <span class="section-tag">The difference</span>
-      <div class="comp-wrap">
-        <div class="comp-card"><div class="comp-label">Time spent today — per capital call</div><div class="comp-num" style="color:#c0392b;">2–4 hrs</div><div class="comp-note">Manual, error-prone, no audit trail</div></div>
-        <div class="comp-vs">versus</div>
-        <div class="comp-card good"><div class="comp-label">Time with HighTraverse</div><div class="comp-num">&lt;10 min</div><div class="comp-note">Automated, accurate, every step logged</div></div>
-        <div class="saving-card"><div class="comp-label" style="margin-bottom:10px;">What that means annually</div><div class="saving-text">A firm processing 50 capital calls per year saves <strong>150+ hours</strong> of ops time — nearly a full month of work, eliminated entirely.</div></ol>
+      <div>
+        <span class="section-label">The difference</span>
+        <div class="comp-wrap">
+          <div class="comp-card">
+            <div class="comp-label">Time spent today — per capital call</div>
+            <div class="comp-num" style="color:var(--red);">2–4 hrs</div>
+            <div class="comp-note">Manual, error-prone, no audit trail</div>
+          </div>
+          <div class="comp-vs">vs.</div>
+          <div class="comp-card good">
+            <div class="comp-label">Time with HighTraverse</div>
+            <div class="comp-num">&lt;10 min</div>
+            <div class="comp-note">Documents generated, wire checked, everything logged</div>
+          </div>
+          <div class="saving-card">
+            <div class="comp-label" style="margin-bottom:8px;">What that adds up to</div>
+            <div class="saving-text">A firm processing 50 capital calls a year saves <strong>150+ hours of ops time</strong> — close to a full month of work, on something that shouldn't require a person at all.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHO IT WORKS FOR — USER TYPE TABS -->
-<section style="background:var(--ink); color:var(--white); padding:100px 56px;" id="who-it-works-for">
-  <div class="who-inner">
+<!-- WHO IT'S FOR -->
+<section class="who-wrap" id="who-it-works-for">
+  <div class="inner">
     <div class="who-header reveal">
       <div>
-        <span class="section-tag">Who it's for</span>
-        <h2 class="section-title" style="color:var(--white);">Built for every part of the fund structure.</h2>
+        <span class="section-label" style="color:var(--accent);">Who it's for</span>
+        <h2 class="section-title" style="color:var(--white);">It works wherever you sit in the fund structure.</h2>
       </div>
-      <p class="section-sub" style="color:var(--white-dim);">HighTraverse works for individual investors, funds issuing notices, and fund of funds managing both sides. Select your role to see what it does for you.</p>
+      <p class="section-sub" style="color:rgba(255,255,255,0.50);">Whether you receive capital calls, issue them, or both — the workflows are the same. Pick your role to see what changes.</p>
     </div>
 
     <div class="reveal">
@@ -406,222 +440,375 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
         <button class="tab-btn active" onclick="showTab(event,'investor')">Individual Investor</button>
         <button class="tab-btn" onclick="showTab(event,'fund')">Fund / GP</button>
         <button class="tab-btn" onclick="showTab(event,'fof')">Fund of Funds / Family Office</button>
-      </article>
+      </div>
 
       <!-- TAB: INDIVIDUAL INVESTOR -->
       <article class="tab-panel active" id="tab-investor">
         <div class="tab-left">
-          <p class="tab-desc">You hold positions in underlying funds. Capital calls come in, you wire money out, distributions come back. HighTraverse handles the paperwork and wire prep automatically — and gives you a full picture of your portfolio over time.</p>
+          <p class="tab-desc">You hold positions in private funds. Capital calls come in, you wire money out, distributions come back. HighTraverse handles the paperwork and wire verification automatically — and will show you your full portfolio value over time.</p>
           <ul class="tab-workflows">
             <li class="workflow-item">
-              <div class="wf-icon">📄</div>
+              <div class="wf-dot"></div>
               <div>
                 <h3 class="wf-title">Capital call parsing</h3>
-                <div class="wf-desc">Upload the notice PDF. Fund name, amount, and due date extracted automatically.</div>
+                <div class="wf-desc">Upload the PDF. Fund name, amount, and due date pulled out automatically — no manual entry.</div>
                 <span class="wf-badge live">Live</span>
               </div>
-            </div>
+            </li>
             <li class="workflow-item">
-              <div class="wf-icon">🏦</div>
+              <div class="wf-dot"></div>
               <div>
-                <h3 class="wf-title">Wire template + fraud detection</h3>
-                <div class="wf-desc">Wire instructions extracted and verified against historical records. Any change in bank details flagged before money moves.</div>
+                <h3 class="wf-title">Wire template and fraud check</h3>
+                <div class="wf-desc">Wire instructions extracted from the notice and compared against your historical records. Any change in ABA, account number, or beneficiary name is flagged before you send anything.</div>
                 <span class="wf-badge live">Live</span>
               </div>
-            </div>
+            </li>
             <li class="workflow-item">
-              <div class="wf-icon">📊</div>
+              <div class="wf-dot"></div>
               <div>
                 <h3 class="wf-title">Portfolio FMV dashboard</h3>
-                <div class="wf-desc">Capital statements ingested automatically. FMV per investment updated each period — your full portfolio in one view.</div>
+                <div class="wf-desc">Capital statements ingested automatically. Your FMV per fund updated each period without touching the GL.</div>
                 <span class="wf-badge soon">Coming soon</span>
               </div>
-            </div>
+            </li>
             <li class="workflow-item">
-              <div class="wf-icon">🗄️</div>
+              <div class="wf-dot"></div>
               <div>
-                <h3 class="wf-title">Document vault</h3>
-                <div class="wf-desc">Every capital call notice, distribution notice, and wire template stored securely with a full audit trail.</div>
+                <h3 class="wf-title">Document storage</h3>
+                <div class="wf-desc">Every notice and wire template stored and indexed, with a full audit trail.</div>
                 <span class="wf-badge soon">Coming soon</span>
               </div>
-            </ul>
-          </div>
+            </li>
+          </ul>
         </div>
         <figure class="tab-visual">
-          <figcaption class="v-label"><div class="v-dot"></div>Wire verification — capital call received</figcaption>
+          <figcaption class="v-label">Wire check — capital call received</figcaption>
           <div class="doc-preview">
-            <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Sequoia Capital Fund XVIII — Capital Call</div><div class="doc-meta">$125,000.00 · Due June 15, 2026</div></div><span class="doc-badge green">Parsed</span></div>
-            <div style="height:12px;"></div>
-            <div class="doc-card"><div class="doc-icon">🏦</div><div><div class="doc-name">JPMorgan Chase · ABA 021000021</div><div class="doc-meta">Sequoia Capital Management LLC</div></div><span class="doc-badge green">MATCH</span></div>
-            <div class="doc-card" style="border-color:rgba(251,191,36,0.4);"><div class="doc-icon">⚠️</div><div><div class="doc-name">Accel Growth Fund IV</div><div class="doc-meta" style="color:#fbbf24;">Account number changed — verify before wiring</div></div><span class="doc-badge amber">CHANGED</span></div>
-            <div style="height:12px;"></div>
-            <div class="doc-card"><div class="doc-icon">📋</div><div><div class="doc-name">Wire Template — Sequoia Capital Fund XVIII.pdf</div><div class="doc-meta">Ready to submit · Sign-off lines included</div></div><span class="doc-badge green">Ready</span></div>
+            <div class="doc-card">
+              <div>
+                <div class="doc-name">Sequoia Capital Fund XVIII — Capital Call</div>
+                <div class="doc-meta">$125,000.00 · Due June 15, 2026</div>
+              </div>
+              <span class="doc-badge green">Parsed</span>
+            </div>
+            <div style="height:8px;"></div>
+            <div class="doc-card">
+              <div>
+                <div class="doc-name">JPMorgan Chase · ABA 021000021</div>
+                <div class="doc-meta">Sequoia Capital Management LLC</div>
+              </div>
+              <span class="doc-badge green">Match</span>
+            </div>
+            <div class="doc-card" style="border-color:rgba(217,119,6,0.40);">
+              <div>
+                <div class="doc-name">Accel Growth Fund IV</div>
+                <div class="doc-meta" style="color:var(--amber);">Account number changed — confirm before wiring</div>
+              </div>
+              <span class="doc-badge amber">Changed</span>
+            </div>
+            <div style="height:8px;"></div>
+            <div class="doc-card">
+              <div>
+                <div class="doc-name">Wire Template — Sequoia Capital Fund XVIII.pdf</div>
+                <div class="doc-meta">Ready · Sign-off lines included</div>
+              </div>
+              <span class="doc-badge green">Ready</span>
+            </div>
           </div>
-          <div class="coming-soon-box">
-            <div class="cs-label">Coming in Phase 3</div>
-            <div class="cs-text">FMV dashboard — all your positions, updated each period from capital account statements. Your full portfolio value in one view.</div>
+          <div class="coming-box">
+            <div class="coming-box-label">Coming in Phase 3</div>
+            <div class="coming-box-text">FMV dashboard — all your positions, updated each period from capital account statements.</div>
           </div>
-        </div>
+        </figure>
       </article>
 
       <!-- TAB: FUND / GP -->
       <article class="tab-panel" id="tab-fund">
         <div class="tab-left">
-          <p class="tab-desc">You're issuing capital calls and distributions to your limited partners. HighTraverse calculates every LP's pro-rata share, generates branded notices automatically, and maintains a full audit trail on every document sent.</p>
+          <p class="tab-desc">You're issuing capital calls and distributions to your limited partners. HighTraverse calculates every LP's share, generates a branded notice per LP, and keeps a full record of every document sent.</p>
           <ul class="tab-workflows">
             <li class="workflow-item">
-              <div class="wf-icon">🧮</div>
+              <div class="wf-dot"></div>
               <div>
                 <h3 class="wf-title">Pro-rata allocation</h3>
-                <div class="wf-desc">Every LP's share calculated from ownership percentage. Rounding handled per fund accounting standards — reconciles to the penny every time.</div>
+                <div class="wf-desc">Each LP's share calculated from committed capital. Rounding handled correctly — reconciles to the penny every time.</div>
                 <span class="wf-badge live">Live</span>
               </div>
-            </div>
+            </li>
             <li class="workflow-item">
-              <div class="wf-icon">📄</div>
+              <div class="wf-dot"></div>
               <div>
-                <h3 class="wf-title">LP capital call notices</h3>
-                <div class="wf-desc">Branded capital call memo generated per LP automatically. Each notice shows their specific amount, due date, and fund details.</div>
+                <h3 class="wf-title">Capital call notices per LP</h3>
+                <div class="wf-desc">A branded capital call memo generated for each LP automatically, showing their specific amount, due date, and fund details.</div>
                 <span class="wf-badge live">Live</span>
               </div>
-            </div>
+            </li>
             <li class="workflow-item">
-              <div class="wf-icon">💚</div>
+              <div class="wf-dot"></div>
               <div>
-                <h3 class="wf-title">Distribution notices</h3>
-                <div class="wf-desc">Distribution notices generated per LP when it's time to return capital. Same workflow, full audit log.</div>
+                <h3 class="wf-title">Distribution notices per LP</h3>
+                <div class="wf-desc">Same workflow for distributions — allocate, generate per LP, log everything.</div>
                 <span class="wf-badge live">Live</span>
               </div>
-            </div>
+            </li>
             <li class="workflow-item">
-              <div class="wf-icon">🗄️</div>
+              <div class="wf-dot"></div>
               <div>
-                <h3 class="wf-title">Document vault</h3>
-                <div class="wf-desc">Every notice issued stored securely and searchable. Full chain of custody — who generated it, when, for which LP.</div>
+                <h3 class="wf-title">Document storage</h3>
+                <div class="wf-desc">Every notice stored with a full chain of custody — who generated it, when, for which LP.</div>
                 <span class="wf-badge soon">Coming soon</span>
               </div>
-            </ul>
-          </div>
+            </li>
+          </ul>
         </div>
         <figure class="tab-visual">
-          <figcaption class="v-label"><div class="v-dot"></div>Notices generated — LP capital call</figcaption>
+          <figcaption class="v-label">Notices generated — LP capital call</figcaption>
           <div class="doc-preview">
-            <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Anchor Capital LP - Capital Call Notice.pdf</div><div class="doc-meta">$638,250.00 · Due June 15, 2026</div></div><span class="doc-badge green">Sent</span></div>
-            <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Meridian Family Office - Capital Call Notice.pdf</div><div class="doc-meta">$425,000.00 · Due June 15, 2026</div></div><span class="doc-badge green">Sent</span></div>
-            <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Bluewater Endowment - Capital Call Notice.pdf</div><div class="doc-meta">$212,500.00 · Due June 15, 2026</div></div><span class="doc-badge green">Sent</span></div>
-            <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Summit Partners III LP - Capital Call Notice.pdf</div><div class="doc-meta">$106,250.00 · Due June 15, 2026</div></div><span class="doc-badge green">Sent</span></div>
-            <div style="font-size:12px; color:var(--white-dimmer); padding-top:8px;">+ 13 more notices · Total reconciled: $4,250,000.00</div>
+            <div class="doc-card">
+              <div>
+                <div class="doc-name">Anchor Capital LP — Capital Call Notice.pdf</div>
+                <div class="doc-meta">$638,250.00 · Due June 15, 2026</div>
+              </div>
+              <span class="doc-badge green">Generated</span>
+            </div>
+            <div class="doc-card">
+              <div>
+                <div class="doc-name">Meridian Family Office — Capital Call Notice.pdf</div>
+                <div class="doc-meta">$425,000.00 · Due June 15, 2026</div>
+              </div>
+              <span class="doc-badge green">Generated</span>
+            </div>
+            <div class="doc-card">
+              <div>
+                <div class="doc-name">Bluewater Endowment — Capital Call Notice.pdf</div>
+                <div class="doc-meta">$212,500.00 · Due June 15, 2026</div>
+              </div>
+              <span class="doc-badge green">Generated</span>
+            </div>
+            <div class="doc-card">
+              <div>
+                <div class="doc-name">Summit Partners III LP — Capital Call Notice.pdf</div>
+                <div class="doc-meta">$106,250.00 · Due June 15, 2026</div>
+              </div>
+              <span class="doc-badge green">Generated</span>
+            </div>
+            <div style="font-size:11px; color:rgba(255,255,255,0.30); padding-top:8px;">+ 13 more · Total reconciled: $4,250,000.00</div>
           </div>
-        </div>
+        </figure>
       </article>
 
       <!-- TAB: FUND OF FUNDS -->
       <article class="tab-panel" id="tab-fof">
         <div class="tab-left">
-          <p class="tab-desc">You sit in the middle — receiving capital calls from underlying funds and issuing them to your own LPs. HighTraverse handles both sides of every transaction: inbound notice to wire out, and allocation to LP memo. All four workflows, fully automated.</p>
+          <p class="tab-desc">You receive capital calls from underlying funds and issue them to your own LPs. HighTraverse handles both directions — inbound notice to wire out, and allocation to LP memo — in the same workflow.</p>
           <ul class="tab-workflows">
             <li class="workflow-item">
-              <div class="wf-icon">📄</div>
+              <div class="wf-dot"></div>
               <div>
-                <h3 class="wf-title">Capital call ingestion + allocation</h3>
-                <div class="wf-desc">Receive a capital call PDF from an underlying fund. Extract the details, map to your vehicle, and calculate every LP's pro-rata share automatically.</div>
+                <h3 class="wf-title">Capital call ingestion and allocation</h3>
+                <div class="wf-desc">Receive a PDF from an underlying fund. Extract the details, map to your vehicle, and calculate each LP's share.</div>
                 <span class="wf-badge live">Live</span>
               </div>
-            </div>
+            </li>
             <li class="workflow-item">
-              <div class="wf-icon">📋</div>
+              <div class="wf-dot"></div>
               <div>
                 <h3 class="wf-title">LP memo generation</h3>
-                <div class="wf-desc">Branded capital call memo generated per LP. Each notice shows their specific allocation, due date, and wire instruction placeholder.</div>
+                <div class="wf-desc">Branded capital call memo per LP, showing their specific allocation and due date.</div>
                 <span class="wf-badge live">Live</span>
               </div>
-            </div>
+            </li>
             <li class="workflow-item">
-              <div class="wf-icon">🏦</div>
+              <div class="wf-dot"></div>
               <div>
-                <h3 class="wf-title">Wire template + fraud detection</h3>
-                <div class="wf-desc">Wire instructions extracted and verified against historical records. Any change in bank details flagged before money moves.</div>
+                <h3 class="wf-title">Wire template and fraud check</h3>
+                <div class="wf-desc">Wire instructions verified against your records before money moves. Changes flagged automatically.</div>
                 <span class="wf-badge live">Live</span>
               </div>
-            </div>
+            </li>
             <li class="workflow-item">
-              <div class="wf-icon">💚</div>
+              <div class="wf-dot"></div>
               <div>
                 <h3 class="wf-title">Distribution notices</h3>
-                <div class="wf-desc">When distributions come in, the same workflow runs in reverse — allocate to LPs, generate branded notices per investor.</div>
+                <div class="wf-desc">When distributions come in, allocate to LPs and generate notices per investor.</div>
                 <span class="wf-badge live">Live</span>
               </div>
-            </ul>
-          </div>
+            </li>
+          </ul>
         </div>
         <figure class="tab-visual">
-          <figcaption class="v-label"><div class="v-dot"></div>Full workflow — fund of funds capital call</figcaption>
-          <div class="term-line">Step 1: Ingesting capital call PDF...</figcaption>
-          <div class="term-line">&nbsp; <span class="label">Fund:</span> <span class="val">Sequoia Capital Fund XVIII</span></figcaption>
-          <div class="term-line">&nbsp; <span class="label">Call:</span> <span class="val">$4,250,000.00 · Due June 15</span></figcaption>
-          <div class="term-line">&nbsp;</figcaption>
-          <div class="term-line">Step 2: Mapping to vehicle...</figcaption>
-          <div class="term-line">&nbsp; <span class="ok">✓</span> <span class="val">HT Growth Fund II</span></figcaption>
-          <div class="term-line">&nbsp;</figcaption>
-          <div class="term-line">Step 3: Calculating LP allocations...</figcaption>
-          <div class="term-line">&nbsp; <span class="ok">✓</span> Total reconciled: <span class="hi">$4,250,000.00</span></figcaption>
-          <div class="term-line">&nbsp;</figcaption>
-          <div class="term-line">Step 4: Generating LP memos...</figcaption>
-          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Anchor Capital LP — $638,250.00</figcaption>
-          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Meridian Family Office — $425,000.00</figcaption>
-          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Bluewater Endowment — $212,500.00</figcaption>
-          <div class="term-line">&nbsp; ... 14 more</figcaption>
-          <div class="term-line">&nbsp;</figcaption>
-          <div class="term-line">Step 5: Wire template...</figcaption>
-          <div class="term-line">&nbsp; Status: <span class="hi">MATCH</span> — verified, ready to submit</figcaption>
-          <div class="term-line">&nbsp;</figcaption>
+          <figcaption class="v-label">Full workflow — fund of funds capital call</figcaption>
+          <div class="term-line">Step 1 &nbsp;Reading capital call PDF</div>
+          <div class="term-line">&nbsp; <span class="lbl">Fund:</span> <span class="val">Sequoia Capital Fund XVIII</span></div>
+          <div class="term-line">&nbsp; <span class="lbl">Call:</span> <span class="val">$4,250,000.00 · Due June 15</span></div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">Step 2 &nbsp;Matching to vehicle</div>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> <span class="val">HT Growth Fund II</span></div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">Step 3 &nbsp;Calculating LP allocations</div>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> Total reconciled: <span class="hi">$4,250,000.00</span></div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">Step 4 &nbsp;Generating LP memos</div>
+          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Anchor Capital LP — $638,250.00</div>
+          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Meridian Family Office — $425,000.00</div>
+          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Bluewater Endowment — $212,500.00</div>
+          <div class="term-line">&nbsp; ... 14 more</div>
+          <div class="term-line">&nbsp;</div>
+          <div class="term-line">Step 5 &nbsp;Wire check</div>
+          <div class="term-line">&nbsp; Status: <span class="hi">Match</span> — verified, ready to submit</div>
+          <div class="term-line">&nbsp;</div>
           <div class="term-line">&nbsp; <span class="ok">✓</span> All documents generated · Run logged</div>
-          <div class="coming-soon-box">
-            <div class="cs-label">Coming in Phase 3</div>
-            <div class="cs-text">FMV dashboard — FMV per underlying investment and per LP investor, updated from capital account statements each period.</div>
+          <div class="coming-box">
+            <div class="coming-box-label">Coming in Phase 3</div>
+            <div class="coming-box-text">FMV dashboard — FMV per underlying investment and per LP investor, updated from capital account statements each period.</div>
           </div>
-        </div>
-      </div>
-
+        </figure>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- PLATFORM FEATURES -->
-<section class="light-white" id="features">
-  <div class="features-inner">
-    <div class="features-top reveal">
-      <div><span class="section-tag">The platform</span><h2 class="section-title">From notice to wire, without touching a spreadsheet.</h2></div>
-      <p class="section-sub">Every step of your capital call and distribution workflow, automated. Built for the way private markets operations actually work.</p>
+<!-- PROOF / PRODUCT SECTION -->
+<section class="proof-wrap" id="features">
+  <div class="inner">
+    <div class="two-col-end reveal">
+      <div>
+        <span class="section-label">What it does</span>
+        <h2 class="section-title">Four workflows, all live today.</h2>
+      </div>
+      <p class="section-sub">Upload a PDF. Everything below happens automatically in under a minute. No configuration, no mapping required after the first run.</p>
     </div>
-    <div class="features-grid reveal">
-      <article class="feature"><div class="feature-num">01</div><h3 class="feature-title">Document ingestion</h3><div class="feature-desc">Capital calls and distribution notices parsed automatically. Fund name, amount, and date extracted with no manual data entry. Works for notices received and notices issued.</article><span class="feature-badge live">Live</span></article>
-      <article class="feature"><div class="feature-num">02</div><h3 class="feature-title">Pro-rata allocation</h3><div class="feature-desc">Every LP's share calculated instantly. Rounding handled per fund accounting standards — reconciles to the penny every time, across any fund structure.</article><span class="feature-badge live">Live</span></article>
-      <article class="feature"><div class="feature-num">03</div><h3 class="feature-title">Memo &amp; notice generation</h3><div class="feature-desc">Branded capital call and distribution notices generated for every LP automatically. What used to take hours per notice takes seconds.</article><span class="feature-badge live">Live</span></article>
-      <article class="feature"><div class="feature-num">04</div><h3 class="feature-title">Wire automation + fraud detection</h3><div class="feature-desc">Wire templates generated per transaction. Bank detail changes flagged automatically before money moves. Approval workflow and full audit trail built in.</article><span class="feature-badge live">Live</span></article>
-      <article class="feature"><div class="feature-num">05</div><h3 class="feature-title">Live FMV dashboard</h3><div class="feature-desc">Capital statements ingested automatically. FMV per investment and per investor, updated each period. Built for investors and fund of funds — your full portfolio in one view without touching your GL.</article><span class="feature-badge soon">Coming soon</span></article>
-      <article class="feature"><div class="feature-num">06</div><h3 class="feature-title">Document custody vault</h3><div class="feature-desc">Every document encrypted, indexed, and stored with a full chain of custody. Search any capital call, distribution notice, or memo ever processed. Built for compliance from day one.</article><span class="feature-badge soon">Coming soon</span></article>
-      <article class="feature"><div class="feature-num">07</div><h3 class="feature-title">AI intelligence — private by design</h3><div class="feature-desc">Natural language queries, valuation reasoning, and cashflow forecasting — powered by enterprise AI infrastructure. Your data is processed via API, never exposed to consumer AI products, and never used to train models.</article><span class="feature-badge soon">Coming soon</span></article>
+
+    <div class="proof-layout reveal">
+      <div>
+        <ol class="feature-list">
+          <li class="feature-item">
+            <div class="feature-n">01</div>
+            <div class="feature-text">
+              <div class="feature-title">Capital call PDF parsing</div>
+              <div class="feature-desc">Fund name, call amount, and due date extracted automatically. Works for any GP notice format.</div>
+              <span class="f-badge live">Live</span>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-n">02</div>
+            <div class="feature-text">
+              <div class="feature-title">Pro-rata LP allocation</div>
+              <div class="feature-desc">Each LP's share calculated from committed capital. Rounding applied per fund accounting standards — reconciles to the penny every time.</div>
+              <span class="f-badge live">Live</span>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-n">03</div>
+            <div class="feature-text">
+              <div class="feature-title">Capital call memos and distribution notices</div>
+              <div class="feature-desc">One branded PDF per LP, generated automatically. What used to take an hour takes about 10 seconds.</div>
+              <span class="f-badge live">Live</span>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-n">04</div>
+            <div class="feature-text">
+              <div class="feature-title">Wire templates and fraud detection</div>
+              <div class="feature-desc">Wire instructions pulled from the notice and checked against your records. Any change in ABA routing, account number, or beneficiary name is flagged before the wire goes out.</div>
+              <span class="f-badge live">Live</span>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-n">05</div>
+            <div class="feature-text">
+              <div class="feature-title">Excel workpaper with full audit trail</div>
+              <div class="feature-desc">Every run produces a workpaper with every allocation, every document generated, and a timestamp. Ready for your auditors.</div>
+              <span class="f-badge live">Live</span>
+            </div>
+          </li>
+          <li class="feature-item">
+            <div class="feature-n">06</div>
+            <div class="feature-text">
+              <div class="feature-title">FMV dashboard and document vault</div>
+              <div class="feature-desc">Portfolio FMV from capital account statements, and secure document storage with chain of custody.</div>
+              <span class="f-badge soon">Coming soon</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Product UI mockup -->
+      <div>
+        <div class="product-mockup">
+          <div class="mock-bar">
+            <div class="mock-dot" style="background:#ef4444;"></div>
+            <div class="mock-dot" style="background:#f59e0b;"></div>
+            <div class="mock-dot" style="background:#22c55e;"></div>
+            <span class="mock-title-bar">HighTraverse — Capital Call</span>
+          </div>
+          <div style="display:flex;">
+            <div class="mock-sidebar">
+              <div class="mock-sidebar-logo">HighTraverse</div>
+              <div class="mock-nav-item active">Capital Call</div>
+              <div class="mock-nav-item">Distribution</div>
+            </div>
+            <div class="mock-main">
+              <div class="mock-heading">Capital Call</div>
+              <div class="mock-sub">Sequoia Capital Fund XVIII.pdf · uploaded</div>
+
+              <div class="mock-status">
+                <div class="mock-status-dot"></div>
+                Parsed · Sequoia Capital Fund XVIII · $4,250,000 · Due Jun 15
+              </div>
+              <div class="mock-warn">
+                Wire instructions changed on Accel Growth Fund IV — confirm before sending
+              </div>
+
+              <div style="font-size:11px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em;">Allocations — HT Growth Fund II</div>
+              <table class="mock-table">
+                <thead>
+                  <tr>
+                    <th>Investor</th>
+                    <th>Ownership</th>
+                    <th>Allocation</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Anchor Capital LP</td><td>15.02%</td><td class="amt">$638,250</td></tr>
+                  <tr><td>Meridian Family Office</td><td>10.00%</td><td class="amt">$425,000</td></tr>
+                  <tr><td>Bluewater Endowment</td><td>5.00%</td><td class="amt">$212,500</td></tr>
+                  <tr><td>Summit Partners III</td><td>2.50%</td><td class="amt">$106,250</td></tr>
+                  <tr><td style="color:var(--muted);">+ 13 more LPs</td><td>67.48%</td><td class="amt">$2,867,750</td></tr>
+                  <tr class="total-row"><td>Total</td><td>100.00%</td><td class="amt">$4,250,000</td></tr>
+                </tbody>
+              </table>
+
+              <div class="mock-dl">
+                <div class="mock-btn primary">Allocation Workpaper.xlsx</div>
+                <div class="mock-btn">LP Memos (17).zip</div>
+                <div class="mock-btn">Wire Template.pdf</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="mock-caption">The actual product — 17 LPs, $4.25M capital call, all documents in under 60 seconds.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ROADMAP -->
-<section style="background:var(--ink-2); color:var(--white); padding:100px 56px;" id="roadmap">
-  <div class="roadmap-inner">
+<section class="roadmap-wrap" id="roadmap">
+  <div class="inner">
     <div class="roadmap-header reveal">
       <div>
-        <span class="section-tag">Roadmap</span>
-        <h2 class="section-title" style="color:var(--white);">Where we're going.</h2>
+        <span class="section-label" style="color:var(--accent);">Roadmap</span>
+        <h2 class="section-title" style="color:var(--white);">What's built and what's next.</h2>
       </div>
-      <p class="section-sub" style="color:var(--white-dim);">Phase 1 is complete and running against live data. The platform is expanding into a full web application with AI-powered document processing — built on enterprise API infrastructure so sensitive financial data never touches a consumer AI product.</p>
+      <p class="section-sub" style="color:rgba(255,255,255,0.45);">Phase 1 is complete and running against live data. The platform is expanding into a full web application with AI-assisted document processing — built on enterprise infrastructure so sensitive data stays private.</p>
     </div>
     <div class="roadmap-phases reveal">
       <article class="phase-card done">
         <div class="phase-num">Phase 1</div>
         <h3 class="phase-title">Automation Engine</h3>
-        <div class="phase-timeline">Now · Complete</div>
-        <div class="phase-status done-status">✓ Complete</div>
+        <div class="phase-timeline">Complete</div>
+        <div class="phase-status done-s">✓ Done</div>
         <div class="phase-items">
           <div class="phase-item done-item">Capital call allocator</div>
           <div class="phase-item done-item">LP memo generator</div>
@@ -630,91 +817,85 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
           <div class="phase-item done-item">Supabase data layer</div>
           <div class="phase-item done-item">Full audit logging</div>
         </div>
-      </div>
+      </article>
       <article class="phase-card current">
         <div class="phase-num">Phase 2</div>
         <h3 class="phase-title">Secure Web App</h3>
         <div class="phase-timeline">Months 2–6</div>
-        <div class="phase-status active-status">⟶ In progress</div>
+        <div class="phase-status active-s">In progress</div>
         <div class="phase-items">
           <div class="phase-item">FastAPI backend</div>
-          <div class="phase-item">Authentication + user management</div>
-          <div class="phase-item">Supabase secure storage</div>
+          <div class="phase-item">Authentication and user management</div>
           <div class="phase-item">Web UI for all workflows</div>
           <div class="phase-item">AI document extraction — any GP format</div>
-          <div class="phase-item">Stripe billing integration</div>
-          <div class="phase-item">Railway cloud deployment</div>
+          <div class="phase-item">Billing integration</div>
+          <div class="phase-item">Cloud deployment</div>
         </div>
-      </div>
+      </article>
       <article class="phase-card">
         <div class="phase-num">Phase 3</div>
-        <h3 class="phase-title">AI Intelligence Layer</h3>
+        <h3 class="phase-title">AI and Analytics</h3>
         <div class="phase-timeline">Months 6–12</div>
-        <div class="phase-status future-status">Planned</div>
+        <div class="phase-status future-s">Planned</div>
         <div class="phase-items">
-          <div class="phase-item">FMV dashboard from cap statements</div>
-          <div class="phase-item">AI valuation reasoning + GP methodology flags</div>
+          <div class="phase-item">FMV dashboard from capital statements</div>
           <div class="phase-item">Cashflow forecasting from call history</div>
           <div class="phase-item">Natural language portfolio queries</div>
-          <div class="phase-item">Advanced wire fraud pattern detection</div>
           <div class="phase-item">Document custody vault</div>
-          <div class="phase-item">Enterprise AI infrastructure (Azure OpenAI)</div>
+          <div class="phase-item">Advanced wire fraud detection</div>
+          <div class="phase-item">Enterprise AI infrastructure</div>
           <div class="phase-item">SOC 2 Type I</div>
         </div>
-      </div>
+      </article>
       <article class="phase-card">
         <div class="phase-num">Phase 4</div>
         <h3 class="phase-title">Enterprise</h3>
         <div class="phase-timeline">Months 12–18</div>
-        <div class="phase-status future-status">Planned</div>
+        <div class="phase-status future-s">Planned</div>
         <div class="phase-items">
           <div class="phase-item">Addepar integration</div>
           <div class="phase-item">Allvue wire templates</div>
           <div class="phase-item">LP self-service portal</div>
-          <div class="phase-item">White-label for fund admins</div>
+          <div class="phase-item">White-label for fund administrators</div>
           <div class="phase-item">SOC 2 Type II</div>
           <div class="phase-item">Enterprise SLAs</div>
-        </article>
-      </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-outer" id="early-access">
-  <div class="cta-glow"></div>
+<section class="cta-wrap" id="early-access">
   <div class="cta-inner reveal">
-    <div class="hero-tag" style="margin:0 auto 24px;"><div class="hero-tag-dot"></div>Limited spots available</div>
-    <h2 class="cta-title">Be among the first to run your ops on HighTraverse.</h2>
-    <p class="cta-sub">We're onboarding a small group of design partners across all three user types. If your team is still processing capital calls and distributions manually, we want to talk.</p>
+    <h2 class="cta-title">If your team still processes capital calls by hand, let's talk.</h2>
+    <p class="cta-sub">We're working with a small group of early users across all three user types. We'll walk you through the product and see if it fits what you're doing.</p>
     <form class="email-form" action="https://formspree.io/f/xzdyzoel" method="POST" onsubmit="handleSubmit(event)">
       <input type="email" name="email" placeholder="your@firm.com" required id="email-input">
       <button type="submit">Request Access</button>
     </form>
     <p class="form-note" id="form-note">No commitment. We'll reach out to schedule a 30-minute call.</p>
-    <p id="form-success" style="display:none;color:#93b4fd;font-size:16px;margin-top:16px;">Thank you — we'll be in touch shortly.</p>
+    <p id="form-success" style="display:none;color:#93b4fd;font-size:15px;margin-top:16px;">Got it — we'll be in touch shortly.</p>
   </div>
-</div>
+</section>
 
 </main>
 
 <footer>
   <div class="footer-logo">High<span>Traverse</span></div>
-  <div class="footer-right">
-    <div class="footer-note">© 2026 HighTraverse · hightraverse.co</div>
-    <div class="footer-coords">40.5883° N, 111.6358° W</div>
-  </div>
+  <div class="footer-note">© 2026 HighTraverse · hightraverse.co</div>
 </footer>
 
 <script>
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
 });
+
 const obs = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
-    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60);
   });
-}, { threshold: 0.07 });
+}, { threshold: 0.06 });
 document.querySelectorAll('.reveal').forEach(r => obs.observe(r));
 
 function showTab(event, tabId) {
