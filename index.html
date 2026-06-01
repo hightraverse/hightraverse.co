@@ -4,6 +4,101 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HighTraverse — Private Markets Operations, Automated</title>
+<meta name="description" content="HighTraverse automates private markets back-office operations — capital call allocation, LP memo generation, wire fraud detection, and distribution notices. Built for private equity funds, fund-of-funds, family offices, RIAs, and fund administrators.">
+<meta name="keywords" content="capital call automation, LP memo generation, wire fraud detection, private equity operations, fund administration, distribution notices, fund of funds, family office, RIA back office, private markets automation">
+<link rel="canonical" href="https://hightraverse.co">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hightraverse.co/#organization",
+      "name": "HighTraverse",
+      "url": "https://hightraverse.co",
+      "description": "HighTraverse is a back-office automation platform for private equity funds, fund-of-funds, family offices, registered investment advisors (RIAs), and fund administrators. It automates capital call allocation, LP memo generation, wire template creation, wire fraud detection, and distribution notices.",
+      "foundingDate": "2026",
+      "sameAs": [
+        "https://www.linkedin.com/company/hightraverse",
+        "https://github.com/hightraverse"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "url": "https://hightraverse.co/#early-access"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hightraverse.co/#software",
+      "name": "HighTraverse",
+      "url": "https://hightraverse.co",
+      "applicationCategory": "FinanceApplication",
+      "applicationSubCategory": "Private Markets Operations Automation",
+      "operatingSystem": "Web",
+      "description": "HighTraverse automates private markets back-office operations. Phase 1 features live: capital call PDF parsing, pro-rata LP allocation, LP capital call memo generation, wire template generation with fraud detection (ABA routing, account number, and beneficiary name verification), and distribution notice generation. Built for private equity funds, fund-of-funds, family offices, RIAs, and fund administrators.",
+      "featureList": [
+        "Capital call PDF parsing and automated data extraction",
+        "Pro-rata LP allocation calculated dynamically from committed capital",
+        "LP capital call memo generation — one PDF per limited partner",
+        "Wire template generation with fraud detection",
+        "Wire instruction change detection (ABA routing, account number, beneficiary name)",
+        "Distribution notice generation per LP",
+        "Excel workpaper generation with full audit trail",
+        "Supabase-backed LP and wire registry database"
+      ],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Private equity funds, fund-of-funds, family offices, registered investment advisors (RIAs), fund administrators, general partners, limited partners"
+      },
+      "offers": {
+        "@type": "Offer",
+        "description": "Early access beta — request access at hightraverse.co",
+        "url": "https://hightraverse.co/#early-access"
+      },
+      "provider": {
+        "@id": "https://hightraverse.co/#organization"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hightraverse.co/#website",
+      "url": "https://hightraverse.co",
+      "name": "HighTraverse",
+      "description": "Private markets operations, automated. HighTraverse automates capital calls, LP memos, wire templates, and distribution notices for private equity funds, fund-of-funds, family offices, and fund administrators.",
+      "publisher": {
+        "@id": "https://hightraverse.co/#organization"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://hightraverse.co/#webpage",
+      "url": "https://hightraverse.co",
+      "name": "HighTraverse — Private Markets Operations, Automated",
+      "isPartOf": { "@id": "https://hightraverse.co/#website" },
+      "about": { "@id": "https://hightraverse.co/#software" },
+      "mainEntity": { "@id": "https://hightraverse.co/#software" },
+      "description": "HighTraverse is a back-office automation platform for private equity funds, fund-of-funds, family offices, RIAs, and fund administrators. Phase 1 is live: capital call allocation, LP memo generation, wire fraud detection, and distribution notices. Phase 2 is in progress: FastAPI backend, authentication, and web UI. Phase 3 planned: FMV dashboard, AI intelligence layer, and SOC 2 Type I.",
+      "keywords": "capital call automation, LP memo, wire fraud detection, private equity back office, fund administration software, distribution notices, fund of funds operations, family office automation, RIA back office, private markets",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "HighTraverse",
+            "item": "https://hightraverse.co"
+          }
+        ]
+      },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".hero-title", ".hero-sub", ".section-title"]
+      }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -234,6 +329,8 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
   </ul>
 </nav>
 
+<main>
+
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
@@ -241,6 +338,7 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
     <path d="M0 400 L0 300 L60 280 L120 295 L180 260 L220 272 L260 240 L300 255 L340 220 L385 238 L430 195 L468 210 L506 175 L534 188 L562 165 L590 178 L620 148 L655 162 L690 130 L725 148 L760 165 L795 145 L830 162 L865 178 L900 158 L935 175 L970 192 L1005 172 L1040 188 L1075 210 L1110 188 L1145 215 L1180 242 L1215 218 L1250 242 L1285 268 L1320 245 L1375 272 L1440 290 L1440 400 Z" fill="white" opacity="1"/>
   </svg>
 
+  <header class="hero-header">
   <div class="hero-tag"><div class="hero-tag-dot"></div>Now in early access</div>
 
   <h1 class="hero-title">
@@ -255,12 +353,13 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
     <a href="#who-it-works-for" class="btn-secondary">See how it works →</a>
   </div>
 
-  <div class="hero-stats">
-    <div class="hstat"><div class="hstat-num">2<span>hrs</span></div><div class="hstat-label">Saved per capital call</div></div>
-    <div class="hstat"><div class="hstat-num">4</div><div class="hstat-label">Core workflows live</div></div>
-    <div class="hstat"><div class="hstat-num">100<span>%</span></div><div class="hstat-label">Audit trail on every document</div></div>
-    <div class="hstat"><div class="hstat-num">0</div><div class="hstat-label">Manual allocation errors</div></div>
-  </div>
+  <dl class="hero-stats">
+    <div class="hstat"><dt class="hstat-num">2<span>hrs</span></dt><dd class="hstat-label">Saved per capital call</dd></div>
+    <div class="hstat"><dt class="hstat-num">4</dt><dd class="hstat-label">Core workflows live</dd></div>
+    <div class="hstat"><dt class="hstat-num">100<span>%</span></dt><dd class="hstat-label">Audit trail on every document</dd></div>
+    <div class="hstat"><dt class="hstat-num">0</dt><dd class="hstat-label">Manual allocation errors</dd></div>
+  </dl>
+  </header>
 </section>
 
 <div class="transition-section"></div>
@@ -272,11 +371,11 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
       <span class="section-tag">The problem</span>
       <h2 class="section-title">The same manual work, every single capital event.</h2>
       <p class="section-sub">Every capital call or distribution triggers the same chain of steps — regardless of where you sit in the fund structure.</p>
-      <div class="pain-list">
-        <div class="pain-item"><div class="pain-num">01</div><div><div class="pain-title">Manual PDF processing</div><div class="pain-desc">Notices arrive as PDFs. Someone reads them, pulls out the numbers, and re-enters the data by hand.</div></div></div>
-        <div class="pain-item"><div class="pain-num">02</div><div><div class="pain-title">Calculations in Excel</div><div class="pain-desc">Allocations, ownership percentages, and distribution amounts calculated manually. One wrong cell ripples everywhere.</div></div></div>
-        <div class="pain-item"><div class="pain-num">03</div><div><div class="pain-title">Documents drafted in Word</div><div class="pain-desc">Notices and memos written one by one from templates. Copy, paste, update — for every LP, every time.</div></div></div>
-        <div class="pain-item"><div class="pain-num">04</div><div><div class="pain-title">Wires set up by hand</div><div class="pain-desc">Bank details pulled from spreadsheets, wires initiated manually. No verification, no audit trail, no protection against fraud.</div></div></div>
+      <ol class="pain-list">
+        <li class="pain-item"><div class="pain-num">01</div><div><h3 class="pain-title">Manual PDF processing</h3><div class="pain-desc">Notices arrive as PDFs. Someone reads them, pulls out the numbers, and re-enters the data by hand.</div></div></div>
+        <li class="pain-item"><div class="pain-num">02</div><div><h3 class="pain-title">Calculations in Excel</h3><div class="pain-desc">Allocations, ownership percentages, and distribution amounts calculated manually. One wrong cell ripples everywhere.</div></div></div>
+        <li class="pain-item"><div class="pain-num">03</div><div><h3 class="pain-title">Documents drafted in Word</h3><div class="pain-desc">Notices and memos written one by one from templates. Copy, paste, update — for every LP, every time.</div></div></div>
+        <li class="pain-item"><div class="pain-num">04</div><div><h3 class="pain-title">Wires set up by hand</h3><div class="pain-desc">Bank details pulled from spreadsheets, wires initiated manually. No verification, no audit trail, no protection against fraud.</div></div></div>
       </div>
     </div>
     <div class="reveal">
@@ -285,7 +384,7 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
         <div class="comp-card"><div class="comp-label">Time spent today — per capital call</div><div class="comp-num" style="color:#c0392b;">2–4 hrs</div><div class="comp-note">Manual, error-prone, no audit trail</div></div>
         <div class="comp-vs">versus</div>
         <div class="comp-card good"><div class="comp-label">Time with HighTraverse</div><div class="comp-num">&lt;10 min</div><div class="comp-note">Automated, accurate, every step logged</div></div>
-        <div class="saving-card"><div class="comp-label" style="margin-bottom:10px;">What that means annually</div><div class="saving-text">A firm processing 50 capital calls per year saves <strong>150+ hours</strong> of ops time — nearly a full month of work, eliminated entirely.</div></div>
+        <div class="saving-card"><div class="comp-label" style="margin-bottom:10px;">What that means annually</div><div class="saving-text">A firm processing 50 capital calls per year saves <strong>150+ hours</strong> of ops time — nearly a full month of work, eliminated entirely.</div></ol>
       </div>
     </div>
   </div>
@@ -307,49 +406,49 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
         <button class="tab-btn active" onclick="showTab(event,'investor')">Individual Investor</button>
         <button class="tab-btn" onclick="showTab(event,'fund')">Fund / GP</button>
         <button class="tab-btn" onclick="showTab(event,'fof')">Fund of Funds / Family Office</button>
-      </div>
+      </article>
 
       <!-- TAB: INDIVIDUAL INVESTOR -->
-      <div class="tab-panel active" id="tab-investor">
+      <article class="tab-panel active" id="tab-investor">
         <div class="tab-left">
           <p class="tab-desc">You hold positions in underlying funds. Capital calls come in, you wire money out, distributions come back. HighTraverse handles the paperwork and wire prep automatically — and gives you a full picture of your portfolio over time.</p>
-          <div class="tab-workflows">
-            <div class="workflow-item">
+          <ul class="tab-workflows">
+            <li class="workflow-item">
               <div class="wf-icon">📄</div>
               <div>
-                <div class="wf-title">Capital call parsing</div>
+                <h3 class="wf-title">Capital call parsing</h3>
                 <div class="wf-desc">Upload the notice PDF. Fund name, amount, and due date extracted automatically.</div>
                 <span class="wf-badge live">Live</span>
               </div>
             </div>
-            <div class="workflow-item">
+            <li class="workflow-item">
               <div class="wf-icon">🏦</div>
               <div>
-                <div class="wf-title">Wire template + fraud detection</div>
+                <h3 class="wf-title">Wire template + fraud detection</h3>
                 <div class="wf-desc">Wire instructions extracted and verified against historical records. Any change in bank details flagged before money moves.</div>
                 <span class="wf-badge live">Live</span>
               </div>
             </div>
-            <div class="workflow-item">
+            <li class="workflow-item">
               <div class="wf-icon">📊</div>
               <div>
-                <div class="wf-title">Portfolio FMV dashboard</div>
+                <h3 class="wf-title">Portfolio FMV dashboard</h3>
                 <div class="wf-desc">Capital statements ingested automatically. FMV per investment updated each period — your full portfolio in one view.</div>
                 <span class="wf-badge soon">Coming soon</span>
               </div>
             </div>
-            <div class="workflow-item">
+            <li class="workflow-item">
               <div class="wf-icon">🗄️</div>
               <div>
-                <div class="wf-title">Document vault</div>
+                <h3 class="wf-title">Document vault</h3>
                 <div class="wf-desc">Every capital call notice, distribution notice, and wire template stored securely with a full audit trail.</div>
                 <span class="wf-badge soon">Coming soon</span>
               </div>
-            </div>
+            </ul>
           </div>
         </div>
-        <div class="tab-visual">
-          <div class="v-label"><div class="v-dot"></div>Wire verification — capital call received</div>
+        <figure class="tab-visual">
+          <figcaption class="v-label"><div class="v-dot"></div>Wire verification — capital call received</figcaption>
           <div class="doc-preview">
             <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Sequoia Capital Fund XVIII — Capital Call</div><div class="doc-meta">$125,000.00 · Due June 15, 2026</div></div><span class="doc-badge green">Parsed</span></div>
             <div style="height:12px;"></div>
@@ -363,49 +462,49 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
             <div class="cs-text">FMV dashboard — all your positions, updated each period from capital account statements. Your full portfolio value in one view.</div>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- TAB: FUND / GP -->
-      <div class="tab-panel" id="tab-fund">
+      <article class="tab-panel" id="tab-fund">
         <div class="tab-left">
           <p class="tab-desc">You're issuing capital calls and distributions to your limited partners. HighTraverse calculates every LP's pro-rata share, generates branded notices automatically, and maintains a full audit trail on every document sent.</p>
-          <div class="tab-workflows">
-            <div class="workflow-item">
+          <ul class="tab-workflows">
+            <li class="workflow-item">
               <div class="wf-icon">🧮</div>
               <div>
-                <div class="wf-title">Pro-rata allocation</div>
+                <h3 class="wf-title">Pro-rata allocation</h3>
                 <div class="wf-desc">Every LP's share calculated from ownership percentage. Rounding handled per fund accounting standards — reconciles to the penny every time.</div>
                 <span class="wf-badge live">Live</span>
               </div>
             </div>
-            <div class="workflow-item">
+            <li class="workflow-item">
               <div class="wf-icon">📄</div>
               <div>
-                <div class="wf-title">LP capital call notices</div>
+                <h3 class="wf-title">LP capital call notices</h3>
                 <div class="wf-desc">Branded capital call memo generated per LP automatically. Each notice shows their specific amount, due date, and fund details.</div>
                 <span class="wf-badge live">Live</span>
               </div>
             </div>
-            <div class="workflow-item">
+            <li class="workflow-item">
               <div class="wf-icon">💚</div>
               <div>
-                <div class="wf-title">Distribution notices</div>
+                <h3 class="wf-title">Distribution notices</h3>
                 <div class="wf-desc">Distribution notices generated per LP when it's time to return capital. Same workflow, full audit log.</div>
                 <span class="wf-badge live">Live</span>
               </div>
             </div>
-            <div class="workflow-item">
+            <li class="workflow-item">
               <div class="wf-icon">🗄️</div>
               <div>
-                <div class="wf-title">Document vault</div>
+                <h3 class="wf-title">Document vault</h3>
                 <div class="wf-desc">Every notice issued stored securely and searchable. Full chain of custody — who generated it, when, for which LP.</div>
                 <span class="wf-badge soon">Coming soon</span>
               </div>
-            </div>
+            </ul>
           </div>
         </div>
-        <div class="tab-visual">
-          <div class="v-label"><div class="v-dot"></div>Notices generated — LP capital call</div>
+        <figure class="tab-visual">
+          <figcaption class="v-label"><div class="v-dot"></div>Notices generated — LP capital call</figcaption>
           <div class="doc-preview">
             <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Anchor Capital LP - Capital Call Notice.pdf</div><div class="doc-meta">$638,250.00 · Due June 15, 2026</div></div><span class="doc-badge green">Sent</span></div>
             <div class="doc-card"><div class="doc-icon">📄</div><div><div class="doc-name">Meridian Family Office - Capital Call Notice.pdf</div><div class="doc-meta">$425,000.00 · Due June 15, 2026</div></div><span class="doc-badge green">Sent</span></div>
@@ -414,68 +513,68 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
             <div style="font-size:12px; color:var(--white-dimmer); padding-top:8px;">+ 13 more notices · Total reconciled: $4,250,000.00</div>
           </div>
         </div>
-      </div>
+      </article>
 
       <!-- TAB: FUND OF FUNDS -->
-      <div class="tab-panel" id="tab-fof">
+      <article class="tab-panel" id="tab-fof">
         <div class="tab-left">
           <p class="tab-desc">You sit in the middle — receiving capital calls from underlying funds and issuing them to your own LPs. HighTraverse handles both sides of every transaction: inbound notice to wire out, and allocation to LP memo. All four workflows, fully automated.</p>
-          <div class="tab-workflows">
-            <div class="workflow-item">
+          <ul class="tab-workflows">
+            <li class="workflow-item">
               <div class="wf-icon">📄</div>
               <div>
-                <div class="wf-title">Capital call ingestion + allocation</div>
+                <h3 class="wf-title">Capital call ingestion + allocation</h3>
                 <div class="wf-desc">Receive a capital call PDF from an underlying fund. Extract the details, map to your vehicle, and calculate every LP's pro-rata share automatically.</div>
                 <span class="wf-badge live">Live</span>
               </div>
             </div>
-            <div class="workflow-item">
+            <li class="workflow-item">
               <div class="wf-icon">📋</div>
               <div>
-                <div class="wf-title">LP memo generation</div>
+                <h3 class="wf-title">LP memo generation</h3>
                 <div class="wf-desc">Branded capital call memo generated per LP. Each notice shows their specific allocation, due date, and wire instruction placeholder.</div>
                 <span class="wf-badge live">Live</span>
               </div>
             </div>
-            <div class="workflow-item">
+            <li class="workflow-item">
               <div class="wf-icon">🏦</div>
               <div>
-                <div class="wf-title">Wire template + fraud detection</div>
+                <h3 class="wf-title">Wire template + fraud detection</h3>
                 <div class="wf-desc">Wire instructions extracted and verified against historical records. Any change in bank details flagged before money moves.</div>
                 <span class="wf-badge live">Live</span>
               </div>
             </div>
-            <div class="workflow-item">
+            <li class="workflow-item">
               <div class="wf-icon">💚</div>
               <div>
-                <div class="wf-title">Distribution notices</div>
+                <h3 class="wf-title">Distribution notices</h3>
                 <div class="wf-desc">When distributions come in, the same workflow runs in reverse — allocate to LPs, generate branded notices per investor.</div>
                 <span class="wf-badge live">Live</span>
               </div>
-            </div>
+            </ul>
           </div>
         </div>
-        <div class="tab-visual">
-          <div class="v-label"><div class="v-dot"></div>Full workflow — fund of funds capital call</div>
-          <div class="term-line">Step 1: Ingesting capital call PDF...</div>
-          <div class="term-line">&nbsp; <span class="label">Fund:</span> <span class="val">Sequoia Capital Fund XVIII</span></div>
-          <div class="term-line">&nbsp; <span class="label">Call:</span> <span class="val">$4,250,000.00 · Due June 15</span></div>
-          <div class="term-line">&nbsp;</div>
-          <div class="term-line">Step 2: Mapping to vehicle...</div>
-          <div class="term-line">&nbsp; <span class="ok">✓</span> <span class="val">HT Growth Fund II</span></div>
-          <div class="term-line">&nbsp;</div>
-          <div class="term-line">Step 3: Calculating LP allocations...</div>
-          <div class="term-line">&nbsp; <span class="ok">✓</span> Total reconciled: <span class="hi">$4,250,000.00</span></div>
-          <div class="term-line">&nbsp;</div>
-          <div class="term-line">Step 4: Generating LP memos...</div>
-          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Anchor Capital LP — $638,250.00</div>
-          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Meridian Family Office — $425,000.00</div>
-          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Bluewater Endowment — $212,500.00</div>
-          <div class="term-line">&nbsp; ... 14 more</div>
-          <div class="term-line">&nbsp;</div>
-          <div class="term-line">Step 5: Wire template...</div>
-          <div class="term-line">&nbsp; Status: <span class="hi">MATCH</span> — verified, ready to submit</div>
-          <div class="term-line">&nbsp;</div>
+        <figure class="tab-visual">
+          <figcaption class="v-label"><div class="v-dot"></div>Full workflow — fund of funds capital call</figcaption>
+          <div class="term-line">Step 1: Ingesting capital call PDF...</figcaption>
+          <div class="term-line">&nbsp; <span class="label">Fund:</span> <span class="val">Sequoia Capital Fund XVIII</span></figcaption>
+          <div class="term-line">&nbsp; <span class="label">Call:</span> <span class="val">$4,250,000.00 · Due June 15</span></figcaption>
+          <div class="term-line">&nbsp;</figcaption>
+          <div class="term-line">Step 2: Mapping to vehicle...</figcaption>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> <span class="val">HT Growth Fund II</span></figcaption>
+          <div class="term-line">&nbsp;</figcaption>
+          <div class="term-line">Step 3: Calculating LP allocations...</figcaption>
+          <div class="term-line">&nbsp; <span class="ok">✓</span> Total reconciled: <span class="hi">$4,250,000.00</span></figcaption>
+          <div class="term-line">&nbsp;</figcaption>
+          <div class="term-line">Step 4: Generating LP memos...</figcaption>
+          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Anchor Capital LP — $638,250.00</figcaption>
+          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Meridian Family Office — $425,000.00</figcaption>
+          <div class="term-line">&nbsp; <span class="ok">[OK]</span> Bluewater Endowment — $212,500.00</figcaption>
+          <div class="term-line">&nbsp; ... 14 more</figcaption>
+          <div class="term-line">&nbsp;</figcaption>
+          <div class="term-line">Step 5: Wire template...</figcaption>
+          <div class="term-line">&nbsp; Status: <span class="hi">MATCH</span> — verified, ready to submit</figcaption>
+          <div class="term-line">&nbsp;</figcaption>
           <div class="term-line">&nbsp; <span class="ok">✓</span> All documents generated · Run logged</div>
           <div class="coming-soon-box">
             <div class="cs-label">Coming in Phase 3</div>
@@ -496,13 +595,13 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
       <p class="section-sub">Every step of your capital call and distribution workflow, automated. Built for the way private markets operations actually work.</p>
     </div>
     <div class="features-grid reveal">
-      <div class="feature"><div class="feature-num">01</div><div class="feature-title">Document ingestion</div><div class="feature-desc">Capital calls and distribution notices parsed automatically. Fund name, amount, and date extracted with no manual data entry. Works for notices received and notices issued.</div><span class="feature-badge live">Live</span></div>
-      <div class="feature"><div class="feature-num">02</div><div class="feature-title">Pro-rata allocation</div><div class="feature-desc">Every LP's share calculated instantly. Rounding handled per fund accounting standards — reconciles to the penny every time, across any fund structure.</div><span class="feature-badge live">Live</span></div>
-      <div class="feature"><div class="feature-num">03</div><div class="feature-title">Memo &amp; notice generation</div><div class="feature-desc">Branded capital call and distribution notices generated for every LP automatically. What used to take hours per notice takes seconds.</div><span class="feature-badge live">Live</span></div>
-      <div class="feature"><div class="feature-num">04</div><div class="feature-title">Wire automation + fraud detection</div><div class="feature-desc">Wire templates generated per transaction. Bank detail changes flagged automatically before money moves. Approval workflow and full audit trail built in.</div><span class="feature-badge live">Live</span></div>
-      <div class="feature"><div class="feature-num">05</div><div class="feature-title">Live FMV dashboard</div><div class="feature-desc">Capital statements ingested automatically. FMV per investment and per investor, updated each period. Built for investors and fund of funds — your full portfolio in one view without touching your GL.</div><span class="feature-badge soon">Coming soon</span></div>
-      <div class="feature"><div class="feature-num">06</div><div class="feature-title">Document custody vault</div><div class="feature-desc">Every document encrypted, indexed, and stored with a full chain of custody. Search any capital call, distribution notice, or memo ever processed. Built for compliance from day one.</div><span class="feature-badge soon">Coming soon</span></div>
-      <div class="feature"><div class="feature-num">07</div><div class="feature-title">AI intelligence — private by design</div><div class="feature-desc">Natural language queries, valuation reasoning, and cashflow forecasting — powered by enterprise AI infrastructure. Your data is processed via API, never exposed to consumer AI products, and never used to train models.</div><span class="feature-badge soon">Coming soon</span></div>
+      <article class="feature"><div class="feature-num">01</div><h3 class="feature-title">Document ingestion</h3><div class="feature-desc">Capital calls and distribution notices parsed automatically. Fund name, amount, and date extracted with no manual data entry. Works for notices received and notices issued.</article><span class="feature-badge live">Live</span></article>
+      <article class="feature"><div class="feature-num">02</div><h3 class="feature-title">Pro-rata allocation</h3><div class="feature-desc">Every LP's share calculated instantly. Rounding handled per fund accounting standards — reconciles to the penny every time, across any fund structure.</article><span class="feature-badge live">Live</span></article>
+      <article class="feature"><div class="feature-num">03</div><h3 class="feature-title">Memo &amp; notice generation</h3><div class="feature-desc">Branded capital call and distribution notices generated for every LP automatically. What used to take hours per notice takes seconds.</article><span class="feature-badge live">Live</span></article>
+      <article class="feature"><div class="feature-num">04</div><h3 class="feature-title">Wire automation + fraud detection</h3><div class="feature-desc">Wire templates generated per transaction. Bank detail changes flagged automatically before money moves. Approval workflow and full audit trail built in.</article><span class="feature-badge live">Live</span></article>
+      <article class="feature"><div class="feature-num">05</div><h3 class="feature-title">Live FMV dashboard</h3><div class="feature-desc">Capital statements ingested automatically. FMV per investment and per investor, updated each period. Built for investors and fund of funds — your full portfolio in one view without touching your GL.</article><span class="feature-badge soon">Coming soon</span></article>
+      <article class="feature"><div class="feature-num">06</div><h3 class="feature-title">Document custody vault</h3><div class="feature-desc">Every document encrypted, indexed, and stored with a full chain of custody. Search any capital call, distribution notice, or memo ever processed. Built for compliance from day one.</article><span class="feature-badge soon">Coming soon</span></article>
+      <article class="feature"><div class="feature-num">07</div><h3 class="feature-title">AI intelligence — private by design</h3><div class="feature-desc">Natural language queries, valuation reasoning, and cashflow forecasting — powered by enterprise AI infrastructure. Your data is processed via API, never exposed to consumer AI products, and never used to train models.</article><span class="feature-badge soon">Coming soon</span></article>
     </div>
   </div>
 </section>
@@ -518,9 +617,9 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
       <p class="section-sub" style="color:var(--white-dim);">Phase 1 is complete and running against live data. The platform is expanding into a full web application with AI-powered document processing — built on enterprise API infrastructure so sensitive financial data never touches a consumer AI product.</p>
     </div>
     <div class="roadmap-phases reveal">
-      <div class="phase-card done">
+      <article class="phase-card done">
         <div class="phase-num">Phase 1</div>
-        <div class="phase-title">Automation Engine</div>
+        <h3 class="phase-title">Automation Engine</h3>
         <div class="phase-timeline">Now · Complete</div>
         <div class="phase-status done-status">✓ Complete</div>
         <div class="phase-items">
@@ -532,9 +631,9 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
           <div class="phase-item done-item">Full audit logging</div>
         </div>
       </div>
-      <div class="phase-card current">
+      <article class="phase-card current">
         <div class="phase-num">Phase 2</div>
-        <div class="phase-title">Secure Web App</div>
+        <h3 class="phase-title">Secure Web App</h3>
         <div class="phase-timeline">Months 2–6</div>
         <div class="phase-status active-status">⟶ In progress</div>
         <div class="phase-items">
@@ -547,9 +646,9 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
           <div class="phase-item">Railway cloud deployment</div>
         </div>
       </div>
-      <div class="phase-card">
+      <article class="phase-card">
         <div class="phase-num">Phase 3</div>
-        <div class="phase-title">AI Intelligence Layer</div>
+        <h3 class="phase-title">AI Intelligence Layer</h3>
         <div class="phase-timeline">Months 6–12</div>
         <div class="phase-status future-status">Planned</div>
         <div class="phase-items">
@@ -563,9 +662,9 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
           <div class="phase-item">SOC 2 Type I</div>
         </div>
       </div>
-      <div class="phase-card">
+      <article class="phase-card">
         <div class="phase-num">Phase 4</div>
-        <div class="phase-title">Enterprise</div>
+        <h3 class="phase-title">Enterprise</h3>
         <div class="phase-timeline">Months 12–18</div>
         <div class="phase-status future-status">Planned</div>
         <div class="phase-items">
@@ -575,14 +674,14 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
           <div class="phase-item">White-label for fund admins</div>
           <div class="phase-item">SOC 2 Type II</div>
           <div class="phase-item">Enterprise SLAs</div>
-        </div>
+        </article>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<div class="cta-outer" id="early-access">
+<section class="cta-outer" id="early-access">
   <div class="cta-glow"></div>
   <div class="cta-inner reveal">
     <div class="hero-tag" style="margin:0 auto 24px;"><div class="hero-tag-dot"></div>Limited spots available</div>
@@ -596,6 +695,8 @@ footer { background: var(--ink-2); padding: 36px 56px; border-top: 1px solid var
     <p id="form-success" style="display:none;color:#93b4fd;font-size:16px;margin-top:16px;">Thank you — we'll be in touch shortly.</p>
   </div>
 </div>
+
+</main>
 
 <footer>
   <div class="footer-logo">High<span>Traverse</span></div>
